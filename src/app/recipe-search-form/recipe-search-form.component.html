@@ -1,0 +1,68 @@
+<div class="recipe-search-form">
+    <h2>Recipe Search</h2>
+  
+    <div class="form-group">
+        <label for="ingredientInput">Ingredients</label>
+        <input type="text" class="form-control" id="ingredientInput" name="ingredientInput" [(ngModel)]="ingredientInput" (keyup.enter)="addIngredient()">
+        <button class="btn btn-primary" (click)="addIngredient()">Add</button>
+      </div>
+    
+      <div class="ingredients-container">
+        <span class="ingredient-tag" *ngFor="let ingredient of ingredients">
+          {{ ingredient }}
+          <span class="remove-ingredient" (click)="removeIngredient(ingredient)">&times;</span>
+        </span>
+      </div>
+  
+    <div class="form-group">
+      <label for="dishTypes">Dish Types:</label>
+      <select id="dishTypes" [(ngModel)]="dishTypes" multiple>
+        <option value="Starter">Starter</option>
+        <option value="Main Course">Main Course</option>
+        <option value="Side Dish">Side Dish</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Dessert">Dessert</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="dietLabels">Diet Labels:</label>
+      <select id="dietLabels" [(ngModel)]="dietLabels" multiple>
+        <option value="Balanced">Balanced</option>
+        <option value="High Fiber">High Fiber</option>
+        <option value="High Protein">High Protein</option>
+        <option value="Low Carb">Low Carb</option>
+        <option value="Low Fat">Low Fat</option>
+        <option value="Low Sodium">Low Sodium</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="allergies">Allergies/Restrictions:</label>
+      <select id="allergies" [(ngModel)]="allergies" multiple>
+        <option value="Dairy">Dairy</option>
+        <option value="Egg">Egg</option>
+        <option value="Gluten">Gluten</option>
+        <option value="Peanut">Peanut</option>
+        <option value="Soy">Soy</option>
+        <!-- Add other common allergens or restrictions here -->
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="cuisineType">Cuisine Type:</label>
+      <select id="cuisineType" [(ngModel)]="cuisineType">
+        <option value="">Any</option>
+        <option value="American">American</option>
+        <option value="Asian">Asian</option>
+        <option value="Italian">Italian</option>
+        <option value="Mexican">Mexican</option>
+        <!-- Add other common cuisine types here -->
+      </select>
+    </div>
+  
+    <button class="btn btn-primary" (click)="searchRecipes()">Search</button>
+  </div>
+  
+  
+  
