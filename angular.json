@@ -30,7 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/app/recipe-search-form/recipe-search-form.component.scss"
             ],
             "scripts": []
           },
@@ -104,4 +106,5 @@
   "cli": {
     "analytics": false
   }
+  
 }
