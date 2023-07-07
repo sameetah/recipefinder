@@ -18,12 +18,7 @@ export class RecipeSearchFormComponent implements OnInit {
 
   constructor(private router: Router, private recipeService: RecipeService) {}
 
-  ngOnInit() {
-    this.showDishTypeCheckboxes = false;
-    this.showdietCheckboxes = false;
-    this.showAllergiesCheckboxes = false;
-    this.showCuisineTypeCheckboxes = false;
-  }
+  ngOnInit() {}
 
   searchRecipes() {
     const API_ENDPOINT = 'https://api.edamam.com/search';
@@ -146,8 +141,6 @@ export class RecipeSearchFormComponent implements OnInit {
   showAllergiesCheckboxes = false;
   showCuisineTypeCheckboxes = false;
 
-  
-
   toggleCheckbox(field: string) {
     switch (field) {
       case 'dishType':
@@ -164,5 +157,4 @@ export class RecipeSearchFormComponent implements OnInit {
         break;
     }
   }
-  
 }
