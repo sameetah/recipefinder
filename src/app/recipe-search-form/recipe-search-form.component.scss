@@ -7,7 +7,7 @@
 }
 
 :root {
-  --green: #96a535;
+  --green: #606c38;
   --beige: #ede3d3;
   --black: #141402;
   --white: #f5f5f5;
@@ -19,18 +19,43 @@
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--white);
+  background-color: #e9edc9;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+.form-group > label {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.h3 {
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+}
+
+.chevron {
+  width: 18px;
+  height: 18px;
+  margin-left: 5px;
+  background-image: url(~/src/assets/chevron-down.svg); /* Path to chevron down image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.chevron-up {
+  background-image: url(~/src/assets/chevron-up.svg); /* Path to chevron up image */
+}
+
 h2 {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .ingredients-container {
@@ -92,6 +117,17 @@ button:active,
 .field span:hover,
 .field span:active {
   background-color: var(--green) !important;
+  font-size: 20px;
+}
+
+.btn-primary {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .field {
