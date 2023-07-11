@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactDialogBoxComponent } from './contact-dialog-box/contact-dialog-box.component';
 
 @Component({
   selector: 'app-root',
