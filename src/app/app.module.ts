@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule, Routes } from '@angular/router';
 import { RecipeSearchFormComponent } from './recipe-search-form/recipe-search-form.component';
 import { RecipeResultsComponent } from './recipe-results/recipe-results.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
@@ -19,17 +17,22 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ContactDialogBoxComponent } from './contact-dialog-box/contact-dialog-box.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavbarComponent } from './navbar/navbar.component';
+import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactFormComponent,
+    ContactDialogBoxComponent,
     RecipeSearchFormComponent,
     RecipeResultsComponent,
     RecipeDetailsComponent,
     FavoriteRecipesComponent,
     WeeklyMealPlanComponent,
-    ContactDialogBoxComponent
+    NavbarComponent,
+    WeeklyCardComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +55,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
 
- }
-
+export class AppModule {}
