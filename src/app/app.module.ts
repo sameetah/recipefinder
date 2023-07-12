@@ -19,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
     FavoriteRecipesComponent,
     WeeklyMealPlanComponent,
     NavbarComponent,
-    WeeklyCardComponent
+    WeeklyCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,11 +51,9 @@ import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'favorites', component: FavoriteRecipesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
-    ])
-
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}
