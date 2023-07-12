@@ -1,0 +1,22 @@
+<div>
+    <h3 class="mt-5">Eating is neccessity, but Cooking is an Art</h3>
+    <p class="h1">Recipe of the day</p>
+    <div class="row mt-5">
+      <div class="col-6">
+        <img src="{{ randomReceipe.image }}" alt="img" />
+      </div>
+      <div class="col-6 receipeText">
+        <h3>{{ randomReceipe.label }}</h3>
+        <p>
+          All what you need for this receipe is: <br />
+          {{ randomReceipe.ingredientLines }}
+        </p>
+        <p>Total calories: {{ randomReceipe.calories | number }}</p>
+        <p>
+          You will spend {{ randomReceipe.totalTime | number : "1.0-0" }} minutes
+          to prepare this receipe
+        </p>
+      </div>
+    </div>
+  </div>
+  
