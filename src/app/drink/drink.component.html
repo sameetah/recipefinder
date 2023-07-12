@@ -1,0 +1,22 @@
+<div class="mt-5 drinkOfTheDay">
+    <h3 class="mt-5">What about some drink recommendation?</h3>
+    <p class="h1">Refreshment of the day</p>
+    <div class="row mt-5" >
+      <div class="col-6 receipeText">
+        <h3>{{ randomDrink.label }}</h3>
+        <p>
+          All what you need for this receipe is: <br />
+          {{ randomDrink.ingredientLines }}
+        </p>
+        <p>Total calories: {{ randomDrink.calories | number }}</p>
+        <p>
+          You will spend {{ randomDrink.totalTime | number : "1.0-0" }} minutes to
+          prepare this receipe
+        </p>
+      </div>
+      <div class="col-6">
+        <img src="{{ randomDrink.image }}" alt="img" />
+      </div>
+    </div>
+  </div>
+  

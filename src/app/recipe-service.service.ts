@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RecipeService {
+ 
   private apiKey = '39acb22fea92153f6dcc90a9ad66adea'; // Replace with your actual API key
 
   constructor(private http: HttpClient) { }
@@ -44,6 +45,46 @@ export class RecipeService {
     console.log('API URL:', apiUrl);
   
     return this.http.get<any>(apiUrl);
+  }
+
+
+  
+  private _url: string = 'https://api.edamam.com/search?app_id=46f85330&app_key=39acb22fea92153f6dcc90a9ad66adea&to=1&q='
+
+  searchRandomRecipes() {
+    const  cuisineType = ["american", "asian", "british", "chinese", "greek", "indian", "italian", "mediterranean", "mexican", "world"];
+    const  meatType = ["Pork", "Chicken", "Lamb", "Beef"]
+    
+    const randomCuisineType = Math.floor(Math.random() * cuisineType.length);
+    const randomMeatType = Math.floor(Math.random() * meatType.length);
+
+    const searchParams = meatType[randomMeatType] + "&cuisineType=" + cuisineType[randomCuisineType]
+
+  
+    console.log( searchParams);
+    console.log( this._url);
+
+    const randomRecipe = this._url + searchParams
+
+    console.log('1 RECIPE REQUEST', randomRecipe)
+  
+    return this.http.get<any>(randomRecipe)
+  }
+
+  searchRandomDrink() {
+    const drinkType = ["Vodka", "Wine", "Beer", "Milk", "Juice", "Apple" , "Banana"  , "Juice", "Smoothie", "Cocktail"  ]
+
+    const randomDrinkType = Math.floor(Math.random() * drinkType.length);
+    const searchParams = drinkType + "&dishType=Drinks"
+  
+    console.log( searchParams);
+    console.log( this._url);
+
+    const randomDrink = this._url + drinkType[randomDrinkType] 
+
+    console.log('1 DRINK REQUEST', randomDrink)
+  
+    return this.http.get<any>(randomDrink)
   }
   
 
