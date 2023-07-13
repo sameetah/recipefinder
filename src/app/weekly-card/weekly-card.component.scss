@@ -1,0 +1,35 @@
+.container {
+  margin-bottom: 20px; 
+}
+
+.button-container {
+  margin-top: 20px; }
+
+.table {
+  margin-bottom: 0;
+  border-color: #606c38;
+  box-shadow: 0px 0px 12px 5px rgba(96, 108, 56, 0.55);
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeInOut 500ms;
+}
+
+th,
+td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+}
+
+.weekday {
+  font-weight: bold;
+}
+
+.meal-label {
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}

@@ -19,11 +19,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
+import { RouterModule } from '@angular/router';
+import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
 import { FoodComponent } from './food/food.component';
 import { DrinkComponent } from './drink/drink.component';
 import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
-import { RouterModule } from '@angular/router';
-
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { RouterModule } from '@angular/router';
     WeeklyCardComponent,
     FoodComponent,
     DrinkComponent,
-    FoodAndDrinkComponent
+    FoodAndDrinkComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,11 +58,9 @@ import { RouterModule } from '@angular/router';
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'favorites', component: FavoriteRecipesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
-    ])
-
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

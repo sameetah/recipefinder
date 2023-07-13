@@ -1,6 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPlan } from '../weekly-meal-plan/plans';
+import { WeeklyRecipePlanService } from './weekly-recipe-plan.service';
+import { HttpClient } from '@angular/common/http';
+import {
+  RecipeModel,
+  SubRecipeResult,
+} from '../weekly-meal-plan/weekly-recipe.model';
+import { FormsModule } from '@angular/forms';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-weekly-card',
@@ -10,30 +24,73 @@ import { IPlan } from '../weekly-meal-plan/plans';
 export class WeeklyCardComponent implements OnInit {
   page: string = '';
   singlePlan: IPlan | undefined;
+  recipe!: RecipeModel;
+  title: string = '';
+  ingredient: string = '';
+  id: number = 0;
+  url: string = '';
+  planName: string = '';
+  breakfastData: SubRecipeResult[] = [];
+  lunchData: SubRecipeResult[] = [];
+  dinnerData: SubRecipeResult[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  fadeInOutAnimation = trigger('fadeInOut', [
+    transition(':enter', [
+      style({ opacity: 0 }),
+      animate('300ms', style({ opacity: 1 })),
+    ]),
+    transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
+  ]);
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private mealPlanService: WeeklyRecipePlanService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const id = parseInt(params['id'], 10);
-      if (!isNaN(id)) {
-        this.singlePlan = {
-          planId: id,
-          imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
-          planName: 'keto',
-          description: 'Keto is a very healthy diet',
-        };
-        this.page = `id num: ${id}`;
-      } else {
-
-        this.page = 'Invalid id';
-      }
+    this.route.params.subscribe((params) => {
+      const name = params['planName'];
+      console.log(name);
+      this.planName = name;
     });
+
+    this.mealPlanService
+      .fetchRecipes(this.planName, 'breakfast')
+      .subscribe((data: any) => {
+        console.log(data.results);
+        this.breakfastData = data.results;
+      });
+
+    this.mealPlanService
+      .fetchRecipes(this.planName, 'lunch')
+      .subscribe((data: any) => {
+        console.log(data.results);
+        this.lunchData = data.results;
+      });
+
+    this.mealPlanService
+      .fetchRecipes(this.planName, 'dinner')
+      .subscribe((data: any) => {
+        console.log(data.results);
+        this.dinnerData = data.results;
+      });
   }
-  
-  
 
   onClickBack() {
     this.router.navigate(['/meal-plan']);
+  }
+
+  getDetailedrecipe(event: Event) {
+    event.preventDefault();
+    this.mealPlanService
+      .fetchDetailedRecipes(this.id)
+      .subscribe((detailedRecipe: any) => {
+        console.log(detailedRecipe);
+        this.url = detailedRecipe.sourceUrl;
+
+        window.open(this.url, '_blank');
+      });
   }
 }
