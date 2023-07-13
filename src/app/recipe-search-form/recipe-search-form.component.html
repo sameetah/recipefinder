@@ -6,9 +6,10 @@
   <div class="form-group">
     <div class="ingredients-container">
       <div class="mb-3" id="ingredientsWrapper">
-        <p class="h3" style="text-align: left!important;">Enter the first ingredient before adding more.</p>
+        <p class="h3">Enter the first ingredient before adding more.</p>
         <div class="px-5 mb-3 field" *ngFor="let ingredient of ingredients; let i = index">
-          <input type="text" class="border-0 me-2 form-control form-control-sm" [(ngModel)]="ingredients[i]" autofocus>
+          <label class="visually-hidden" for="ingredient{{ i }}">Ingredient {{ i + 1 }}</label>
+          <input type="text" id="ingredient{{ i }}" class="border-0 me-2 form-control form-control-sm" [(ngModel)]="ingredients[i]" autofocus>
           <span class="btn px-3 btn-primary" (click)="removeIngredient(i)">&#8722;</span>
         </div>
         <div class="px-5 mb-3 field">
@@ -75,7 +76,7 @@
 </div>
 
 <div class="selected-items">
-  <h3>Your Selected Ingredients and Criteria</h3>
+  <h4>Your Selected Ingredients and Criteria</h4>
   <div class="recipe-tags">
     <p *ngFor="let ingredient of ingredients" class="tag">{{ ingredient }}</p>
     <p *ngFor="let dishType of dishType" class="tag">{{ dishType.label }}</p>

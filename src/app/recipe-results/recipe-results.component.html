@@ -59,7 +59,7 @@
     <div class="col-12 px-0">
       <div class="lh-base text-muted py-2">
         Show Labels
-        <a href="javascript:void(0)" id="tag" class="toggler small text-muted ms-2 bi" [class.bi-chevron-down]="!showTags" [class.bi-chevron-up]="showTags" (click)="showTags = !showTags"></a>
+        <a href="javascript:void(0)" id="tag" class="toggler small text-muted ms-2 bi" [class.bi-chevron-down]="!showTags" [class.bi-chevron-up]="showTags" (click)="showTags = !showTags" title="Toggle tags"></a>
       </div>
         <div class="py-2 label-container" [class.open]="showTags" [style.border-top]="showTags ? '1px solid var(--bs-border-color)' : 'none'" [style.border-bottom]="showTags ? '1px solid var(--bs-border-color)' : 'none'">
         <div class="mb-1" *ngIf="showTags">
