@@ -20,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
 import { RouterModule } from '@angular/router';
+import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
 
 @NgModule({
   declarations: [

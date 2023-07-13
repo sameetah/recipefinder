@@ -8,7 +8,10 @@
           <p class="card-text">
             {{ plan.description }}
           </p>
-          <a [routerLink]="['/meal-plan', plan.planId]" class="btn btn-primary">
+          <a
+            [routerLink]="['/meal-plan', plan.planName]"
+            class="btn btn-primary"
+          >
             get plan: {{ plan.planId }}
           </a>
         </div>

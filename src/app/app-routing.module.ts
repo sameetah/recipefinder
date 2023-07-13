@@ -14,12 +14,12 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'favorites', component: FavoriteRecipesComponent },
   { path: 'meal-plan', component: WeeklyMealPlanComponent },
-  { path: 'meal-plan/:id', component: WeeklyCardComponent },
+  { path: 'meal-plan/:planName', component: WeeklyCardComponent },
   { path: '', redirectTo: '/meal-plan', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
