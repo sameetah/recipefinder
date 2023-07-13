@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../recipe-service.service';
-
 
 @Component({
   selector: 'app-recipe-search-form',
@@ -15,6 +14,10 @@ export class RecipeSearchFormComponent implements OnInit {
   diet: any[] = [];
   health: any[] = [];
   cuisineType: any[] = [];
+  showDishTypeCheckboxes = false;
+  showdietCheckboxes = false;
+  showhealthCheckboxes = false;
+  showCuisineTypeCheckboxes = false;
 
   constructor(private router: Router, private recipeService: RecipeService) {}
 
@@ -33,9 +36,9 @@ export class RecipeSearchFormComponent implements OnInit {
       health: this.health.filter(health => health.selected).map(health => health.value),
       cuisineType: this.cuisineType.filter(cuisine => cuisine.selected).map(cuisine => cuisine.value)
     };
-  
+
     console.log('Search Params:', searchParams);
-  
+
     const queryParams = {
       ingredients: searchParams.q,
       dishType: searchParams.dishType.join(','),
@@ -43,13 +46,11 @@ export class RecipeSearchFormComponent implements OnInit {
       health: searchParams.health.join(','),
       cuisineType: searchParams.cuisineType.join(',')
     };
-  
+
     console.log('Query Params:', queryParams);
-  
+
     this.router.navigate(['/results'], { queryParams });
   }
-  
-  
 
   addIngredient() {
     if (this.ingredientInput.trim() !== '') {
@@ -57,7 +58,7 @@ export class RecipeSearchFormComponent implements OnInit {
       this.ingredientInput = '';
     }
   }
-  
+
   removeIngredient(index: number) {
     if (index >= 0 && index < this.ingredients.length) {
       this.ingredients.splice(index, 1);
@@ -103,7 +104,7 @@ export class RecipeSearchFormComponent implements OnInit {
     } else {
       this.cuisineType.push(cuisine);
     }
-  }  
+  }
 
   toggleDishType(dishType: string) {
     const index = this.dishType.indexOf(dishType);
@@ -112,7 +113,7 @@ export class RecipeSearchFormComponent implements OnInit {
     } else {
       this.dishType.push(dishType);
     }
-  }  
+  }
 
   togglediet(diet: string) {
     const index = this.diet.indexOf(diet);
@@ -121,7 +122,7 @@ export class RecipeSearchFormComponent implements OnInit {
     } else {
       this.diet.push(diet);
     }
-  }  
+  }
 
   togglehealth(health: string) {
     const index = this.health.indexOf(health);
@@ -130,12 +131,7 @@ export class RecipeSearchFormComponent implements OnInit {
     } else {
       this.health.push(health);
     }
-  }  
-
-  showDishTypeCheckboxes = false;
-  showdietCheckboxes = false;
-  showhealthCheckboxes = false;
-  showCuisineTypeCheckboxes = false;
+  }
 
   toggleCheckbox(field: string) {
     switch (field) {
