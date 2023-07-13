@@ -1,0 +1,16 @@
+
+  
+  :root {
+    --green: #96a535;
+    --beige: #ede3d3;
+    --black: #141402;
+    --white: #f5f5f5;
+    --maintransition: all 0.3s linear;
+    --gradient: linear-gradient(60deg, #e9ae05 15%, #dd7215 50%, #98a60c 85%);
+  }
+  
+ 
+
+  #form-color button,  #nav-color div{
+    color:var(--beige);
+  }

@@ -5,6 +5,7 @@ import { RecipeResultsComponent } from './recipe-results/recipe-results.componen
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.component';
 import { WeeklyMealPlanComponent } from './weekly-meal-plan/weekly-meal-plan.component';
+import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailsComponent },
   { path: 'favorites', component: FavoriteRecipesComponent },
   { path: 'meal-plan', component: WeeklyMealPlanComponent },
+  { path: 'meal-plan/:id', component: WeeklyCardComponent },
+  { path: '', redirectTo: '/meal-plan', pathMatch: 'full' },
 ];
 
 @NgModule({

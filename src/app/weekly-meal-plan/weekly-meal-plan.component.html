@@ -1,1 +1,18 @@
-<p>weekly-meal-plan works!</p>
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let plan of cardsArray">
+      <div class="card">
+        <img [src]="plan.imageUrl" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ plan.planName }}</h5>
+          <p class="card-text">
+            {{ plan.description }}
+          </p>
+          <a [routerLink]="['/meal-plan', plan.planId]" class="btn btn-primary">
+            get plan: {{ plan.planId }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

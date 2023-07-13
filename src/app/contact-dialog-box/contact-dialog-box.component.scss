@@ -1,0 +1,45 @@
+
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+
+}
+
+.dialog-contact {
+    display: flex;
+    justify-content: space-between;   
+    align-items: baseline; 
+
+}
+
+.dialog-container * {
+    padding: 2px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.form-control {
+    width: 100%; /* Set the input width to 100% */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: whitesmoke;
+  }
+  
+  textarea.form-control {
+    resize: vertical; /* Allow vertical resizing of the textarea */
+  }
+
+  .custom-dialog {
+    max-width: 500px; /* Adjust the maximum width of the dialog box */
+    width: 90%; /* Adjust the width of the dialog box */
+  }
