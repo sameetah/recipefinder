@@ -48,7 +48,5 @@ export class RecipeService {
   
     return this.http.get<any>(apiUrl);
   }
-  
-
   // Add more methods for interacting with the API, such as fetching recipe details, etc.
 }

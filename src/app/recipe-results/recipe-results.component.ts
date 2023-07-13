@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../recipe-service.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -38,6 +38,15 @@ export class RecipeResultsComponent implements OnInit {
     this.cuisine = '';
   }
 
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.navigateToPreviousRecipe();
+    } else if (event.key === 'ArrowRight') {
+      this.navigateToNextRecipe();
+    }
+  }
+
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const { ingredients, dishType, diet, health, cuisineType } = params;
@@ -55,8 +64,9 @@ export class RecipeResultsComponent implements OnInit {
     });
   }
 
-  openRecipeDetails(recipe: any) {
+  openRecipeDetails(recipe: any, index: number) {
     this.selectedRecipe = recipe;
+    this.currentRecipeIndex = index;
     this.dishType = recipe.recipe.dishType ? recipe.recipe.dishType.join(', ') : '';
     this.diet = recipe.recipe.dietLabels ? recipe.recipe.dietLabels.join(', ') : '';
     this.healthLabel = recipe.recipe.healthLabels ? recipe.recipe.healthLabels.join(', ') : '';
@@ -71,6 +81,32 @@ export class RecipeResultsComponent implements OnInit {
     this.cuisine = '';
   }
 
+  navigateToNextRecipe() {
+    if (this.currentRecipeIndex < this.searchResults.length - 1) {
+      this.currentRecipeIndex++;
+      this.selectedRecipe = this.searchResults[this.currentRecipeIndex];
+      this.dishType = this.selectedRecipe.recipe.dishType ? this.selectedRecipe.recipe.dishType.join(', ') : '';
+      this.diet = this.selectedRecipe.recipe.dietLabels ? this.selectedRecipe.recipe.dietLabels.join(', ') : '';
+      this.healthLabel = this.selectedRecipe.recipe.healthLabels ? this.selectedRecipe.recipe.healthLabels.join(', ') : '';
+      this.cuisine = this.selectedRecipe.recipe.cuisineType ? this.selectedRecipe.recipe.cuisineType.join(', ') : '';
+    }
+  }
+  
+  navigateToPreviousRecipe() {
+    if (this.currentRecipeIndex > 0) {
+      this.currentRecipeIndex--;
+      this.selectedRecipe = this.searchResults[this.currentRecipeIndex];
+      this.dishType = this.selectedRecipe.recipe.dishType ? this.selectedRecipe.recipe.dishType.join(', ') : '';
+      this.diet = this.selectedRecipe.recipe.dietLabels ? this.selectedRecipe.recipe.dietLabels.join(', ') : '';
+      this.healthLabel = this.selectedRecipe.recipe.healthLabels ? this.selectedRecipe.recipe.healthLabels.join(', ') : '';
+      this.cuisine = this.selectedRecipe.recipe.cuisineType ? this.selectedRecipe.recipe.cuisineType.join(', ') : '';
+    }
+  }
+  
+
 showTags: boolean = false;
+
+currentRecipeIndex: number = -1;
+
 
 }

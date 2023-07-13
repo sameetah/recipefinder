@@ -225,6 +225,17 @@
     transition: max-height 2s ease;
   }
   
+  .navigation-buttons {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .modal-dialog {
+    flex-grow: 1;
+  }
+  
   
   
   
