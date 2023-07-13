@@ -6,6 +6,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.component';
 import { WeeklyMealPlanComponent } from './weekly-meal-plan/weekly-meal-plan.component';
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
+import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'favorites', component: FavoriteRecipesComponent },
   { path: 'meal-plan', component: WeeklyMealPlanComponent },
   { path: 'meal-plan/:planName', component: WeeklyCardComponent },
+
+  { path: 'food-and-drink', component: FoodAndDrinkComponent },
   { path: '', redirectTo: '/meal-plan', pathMatch: 'full' },
 ];
 

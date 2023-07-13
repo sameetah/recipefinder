@@ -1,18 +1,23 @@
-<div class="container-fluid">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" *ngFor="let plan of cardsArray">
-      <div class="card">
-        <img [src]="plan.imageUrl" class="card-img-top" alt="..." />
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let plan of cardsArray">
+      <div
+        class="card"
+        [@cardHover]="cardState"
+        (mouseenter)="onCardHover()"
+        (mouseleave)="onCardLeave()"
+      ></div>
+      <div class="card mb-4">
+        <img [src]="plan.imageUrl" class="card-img-top" alt="Card image" />
         <div class="card-body">
           <h5 class="card-title">{{ plan.planName }}</h5>
-          <p class="card-text">
-            {{ plan.description }}
-          </p>
+          <p class="card-text">{{ plan.description }}</p>
           <a
             [routerLink]="['/meal-plan', plan.planName]"
             class="btn btn-primary"
+            id="custom-button"
           >
-            get plan: {{ plan.planId }}
+            Get Meal Plan
           </a>
         </div>
       </div>

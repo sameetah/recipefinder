@@ -21,6 +21,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
 import { RouterModule } from '@angular/router';
 import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
+import { FoodComponent } from './food/food.component';
+import { DrinkComponent } from './drink/drink.component';
+import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
     WeeklyMealPlanComponent,
     NavbarComponent,
     WeeklyCardComponent,
+    FoodComponent,
+    DrinkComponent,
+    FoodAndDrinkComponent,
   ],
   imports: [
     BrowserModule,
