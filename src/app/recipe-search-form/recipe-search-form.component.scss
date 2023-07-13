@@ -33,6 +33,11 @@
 .h3 {
   font-size: 1.25rem;
   margin-bottom: 16px;
+  text-align: left !important;
+}
+
+.border-0 {
+  border: 0;
 }
 
 .chevron {
@@ -153,7 +158,7 @@ button:active,
   border-radius: 4px;
 }
 
-h3 {
+h4 {
   display: flex;
   justify-content: center;
   margin: 16px;
