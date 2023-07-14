@@ -1,26 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let plan of cardsArray">
-      <div
-        class="card"
-        [@cardHover]="cardState"
-        (mouseenter)="onCardHover()"
-        (mouseleave)="onCardLeave()"
-      ></div>
-      <div class="card mb-4">
+<div class="recipe-list">
+    <div class="recipe-card" *ngFor="let plan of cardsArray">
         <img [src]="plan.imageUrl" class="card-img-top" alt="Card image" />
-        <div class="card-body">
-          <h5 class="card-title">{{ plan.planName }}</h5>
-          <p class="card-text">{{ plan.description }}</p>
-          <a
-            [routerLink]="['/meal-plan', plan.planName]"
-            class="btn btn-primary"
-            id="custom-button"
-          >
-            Get Meal Plan
-          </a>
+        <div class="recipe-details">
+          <h5 class="recipe-title">{{ plan.planName }}</h5>
+          <p class="recipe-text">{{ plan.description }}</p>
         </div>
+        <button [routerLink]="['/meal-plan', plan.planName]" class="btn btn-primary" id="custom-button"> Get Meal Plan </button>
       </div>
     </div>
-  </div>
-</div>
+
