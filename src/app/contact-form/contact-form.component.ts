@@ -3,11 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogBoxComponent } from '../contact-dialog-box/contact-dialog-box.component';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.scss']
+  styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
   name: string = "";
