@@ -13,7 +13,7 @@ export class RecipeSearchFormComponent implements OnInit {
   ingredientInput: string = '';
   dishType: any[] = [];
   diet: any[] = [];
-  allergies: any[] = [];
+  health: any[] = [];
   cuisineType: any[] = [];
 
   constructor(private router: Router, private recipeService: RecipeService) {}
@@ -22,15 +22,15 @@ export class RecipeSearchFormComponent implements OnInit {
 
   searchRecipes() {
     const API_ENDPOINT = 'https://api.edamam.com/search';
-    const APP_ID = '46f85330'; // Replace with your actual Edamam app ID
-    const APP_KEY = '39acb22fea92153f6dcc90a9ad66adea'; // Replace with your actual Edamam app key
+    const APP_ID = '46f85330';
+    const APP_KEY = '39acb22fea92153f6dcc90a9ad66adea';
 
     const searchParams = {
       q: this.ingredients.join(','),
       ingredients: this.ingredients.join(','),
       dishType: this.dishType.filter(dishType => dishType.selected).map(dishType => dishType.value),
       diet: this.diet.filter(diet => diet.selected).map(diet => diet.value),
-      allergies: this.allergies.filter(allergy => allergy.selected).map(allergy => allergy.value),
+      health: this.health.filter(health => health.selected).map(health => health.value),
       cuisineType: this.cuisineType.filter(cuisine => cuisine.selected).map(cuisine => cuisine.value)
     };
   
@@ -40,7 +40,7 @@ export class RecipeSearchFormComponent implements OnInit {
       ingredients: searchParams.q,
       dishType: searchParams.dishType.join(','),
       diet: searchParams.diet.join(','),
-      allergies: searchParams.allergies.join(','),
+      health: searchParams.health.join(','),
       cuisineType: searchParams.cuisineType.join(',')
     };
   
@@ -64,7 +64,6 @@ export class RecipeSearchFormComponent implements OnInit {
     }
   }
 
-  // Define the dish types as an array of objects
   dishTypeList: any[] = [
     { label: 'Starter', value: 'Starter', selected: false },
     { label: 'Main Course', value: 'Main Course', selected: false },
@@ -73,7 +72,6 @@ export class RecipeSearchFormComponent implements OnInit {
     { label: 'Dessert', value: 'Dessert', selected: false }
   ];
 
-  // Define the diet labels as an array of objects
   dietList: any[] = [
     { label: 'Balanced', value: 'balanced', selected: false },
     { label: 'High Fiber', value: 'high-fiber', selected: false },
@@ -83,25 +81,21 @@ export class RecipeSearchFormComponent implements OnInit {
     { label: 'Low Sodium', value: 'low-sodium', selected: false }
   ];
 
-  // Define the allergies as an array of objects
-  allergiesList = [
-    { label: 'Dairy', value: 'Dairy', selected: false },
-    { label: 'Egg', value: 'Egg', selected: false },
-    { label: 'Gluten', value: 'Gluten', selected: false },
-    { label: 'Peanut', value: 'Peanut', selected: false },
-    { label: 'Soy', value: 'Soy', selected: false }
+  healthList: any[] = [
+    { label: 'Dairy', value: 'dairy-free', selected: false },
+    { label: 'Egg', value: 'egg-free', selected: false },
+    { label: 'Gluten', value: 'gluten-free', selected: false },
+    { label: 'Peanut', value: 'peanut-free', selected: false },
+    { label: 'Soy', value: 'soy-free', selected: false }
   ];
 
-  // Define the cuisine types as an array of objects
   cuisineTypesList: any[] = [
     { label: 'American', value: 'American', selected: false },
     { label: 'Asian', value: 'Asian', selected: false },
     { label: 'Italian', value: 'Italian', selected: false },
     { label: 'Mexican', value: 'Mexican', selected: false },
-    // Add other common cuisine types here
   ];
 
-  // Function to toggle the selection of a cuisine type
   toggleCuisineType(cuisine: string) {
     const index = this.cuisineType.indexOf(cuisine);
     if (index > -1) {
@@ -110,8 +104,7 @@ export class RecipeSearchFormComponent implements OnInit {
       this.cuisineType.push(cuisine);
     }
   }  
-  
-  // Function to toggle the selection of a dish type
+
   toggleDishType(dishType: string) {
     const index = this.dishType.indexOf(dishType);
     if (index > -1) {
@@ -121,7 +114,6 @@ export class RecipeSearchFormComponent implements OnInit {
     }
   }  
 
-  // Function to toggle the selection of a diet label
   togglediet(diet: string) {
     const index = this.diet.indexOf(diet);
     if (index > -1) {
@@ -131,14 +123,18 @@ export class RecipeSearchFormComponent implements OnInit {
     }
   }  
 
-  // Function to toggle the selection of an allergy
-  toggleAllergy(allergy: any) {
-    allergy.selected = !allergy.selected;
-  }
+  togglehealth(health: string) {
+    const index = this.health.indexOf(health);
+    if (index > -1) {
+      this.health.splice(index, 1);
+    } else {
+      this.health.push(health);
+    }
+  }  
 
   showDishTypeCheckboxes = false;
   showdietCheckboxes = false;
-  showAllergiesCheckboxes = false;
+  showhealthCheckboxes = false;
   showCuisineTypeCheckboxes = false;
 
   toggleCheckbox(field: string) {
@@ -149,8 +145,8 @@ export class RecipeSearchFormComponent implements OnInit {
       case 'diet':
         this.showdietCheckboxes = !this.showdietCheckboxes;
         break;
-      case 'allergies':
-        this.showAllergiesCheckboxes = !this.showAllergiesCheckboxes;
+      case 'health':
+        this.showhealthCheckboxes = !this.showhealthCheckboxes;
         break;
       case 'cuisineType':
         this.showCuisineTypeCheckboxes = !this.showCuisineTypeCheckboxes;

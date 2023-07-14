@@ -20,7 +20,7 @@ export class RecipeService {
       q: searchParams.ingredients,
       dishType: searchParams.dishType.join(','),
       diet: searchParams.diet.join(','),
-      health: searchParams.allergies.join(','),
+      health: searchParams.health.join(','),
       cuisineType: searchParams.cuisineType.join(',')
     };
   
@@ -40,6 +40,9 @@ export class RecipeService {
       apiUrl += `&diet=${encodeURIComponent(searchParams.diet.join(','))}`;
     }
     
+    if (searchParams.health.length > 0) {
+      apiUrl += `&health=${encodeURIComponent(searchParams.health.join(','))}`;
+    }
     
   
     console.log('API URL:', apiUrl);
