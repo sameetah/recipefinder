@@ -1,24 +1,28 @@
 .footer {
-    background-color: #f8f9fa;
-    padding: 20px 0;
+    background-color: #e9edc9;
+    border-radius: 0rem 0rem 1rem 1rem;
   }
   
   .card-deck {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    overflow: hidden;
   }
   
   .card {
     width: 300px;
-    margin-bottom: 20px;
+    background-color: #e9edc9;
+    border: none;
+    color: #606c38;
+  }
+
+  .card-lg {
+    width: 600px;
   }
   
   .social-media a {
     margin-right: 10px;
   }
-  
-  .form-group {
-    margin-bottom: 10px;
-  }
+
   
