@@ -1,13 +1,21 @@
-img {
-    width: 500px;
-    border-radius: 1rem;
+* {
+    margin: 0;
+    padding: 0;
+    color: #606c38;
 }
 
+.mainWrap {
+    background-color: #e9edc9;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+
 .receipeText {
-    padding-left: 100px;
     text-align: end;
 }
 
-.drinkOfTheDay {
-    padding-top: 50px;
-}
