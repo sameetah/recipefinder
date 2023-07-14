@@ -7,7 +7,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.scss']
+  styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
   name: string = "";

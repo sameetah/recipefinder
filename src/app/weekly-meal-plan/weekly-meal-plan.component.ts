@@ -59,7 +59,7 @@ export class WeeklyMealPlanComponent {
         'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80',
       planName: 'Ketogenic',
       description:
-        'Here are the basics of keto: The diet aims to force your body into using a different type of fuel. Instead of relying on sugar (glucose) that comes from carbohydrates such as grains, legumes, vegetables, fruits',
+        'Here are the basics of keto: The diet aims to force your body into using a different type of fuel. Instead of relying on sugar (glucose) that comes from carbohydrates such as grains, legumes, vegetables, fruits.',
     },
     {
       planId: 2,
@@ -83,7 +83,7 @@ export class WeeklyMealPlanComponent {
         'https://images.unsplash.com/photo-1467453678174-768ec283a940?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1444&q=80',
       planName: 'Vegan',
       description:
-        'Vegan diets are made up of only plant-based foods. This type of diet includes fruits, vegetables, soy, legumes, nuts and nut butters, plant-based dairy alternatives, sprouted or fermented plant foods and whole grains. Vegan diets dont include animal food',
+        'Vegan diets are made up of only plant-based foods. This type of diet includes fruits, vegetables, soy, legumes, nuts and nut butters, plant-based dairy alternatives, sprouted or fermented plant foods and whole grains. Vegan diets dont include animal food.',
     },
   ];
 }
