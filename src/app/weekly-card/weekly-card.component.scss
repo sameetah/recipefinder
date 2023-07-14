@@ -23,6 +23,7 @@
   border-collapse: collapse;
   border-spacing: 0;
   background-color: #f8f9fa;
+  border: solid #96a535 2px;
 }
 
 th,
@@ -55,13 +56,6 @@ tbody tr:hover {
 
 td {
   background-color: #e9edc9;
-}
-
-.table:before,
-.table:after {
-  content: "";
-  position: absolute;
-  z-index: -1;
 }
 
 .table:before {
