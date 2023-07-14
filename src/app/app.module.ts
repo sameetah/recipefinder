@@ -24,6 +24,7 @@ import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
 import { FoodComponent } from './food/food.component';
 import { DrinkComponent } from './drink/drink.component';
 import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component
     FoodComponent,
     DrinkComponent,
     FoodAndDrinkComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
