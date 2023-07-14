@@ -6,8 +6,10 @@ import { RecipeModel } from '../weekly-meal-plan/weekly-recipe.model';
   providedIn: 'root',
 })
 export class WeeklyRecipePlanService {
+  /*  private apiUrl: string =
+    'https://api.spoonacular.com/recipes/complexSearch?apiKey=82ea8ce52c8f4c148404cb7af2cb4b17'; */
   private apiUrl: string =
-    'https://api.spoonacular.com/recipes/complexSearch?apiKey=82ea8ce52c8f4c148404cb7af2cb4b17';
+    'https://2023-07-13-express-api-mask-production.up.railway.app/recipes/complexSearch';
 
   constructor(private http: HttpClient) {}
 

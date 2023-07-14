@@ -31,7 +31,7 @@ import {
         style({
           transform: 'scale(1.05)',
           boxShadow: '0px 0px 20px 10px rgba(96, 108, 56, 0.7)',
-          color: '#FFFFFF', // Change to desired hover color
+          color: '#FFFFFF',
         })
       ),
       transition('normal => hover', animate('200ms ease-in')),

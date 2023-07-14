@@ -1,10 +1,11 @@
-<<<<<<< HEAD
 <div class="container">
-  <h2 class="text-center">Weekly Meal Plan for {{ planName }} Diet</h2>
+  <h2 class="text-center" id="meal-plan-heading">
+    Weekly Meal Plan for {{ planName }} Diet
+  </h2>
   <div class="calendar">
     <table class="table table-bordered table-hover" [@fadeInOut]>
-      <thead class="thead-dark">
-        <tr>
+      <thead>
+        <tr class="column-header" id="head">
           <th scope="col"></th>
           <th scope="col">Breakfast</th>
           <th scope="col">Lunch</th>
@@ -90,10 +91,3 @@
   </p>
 </div>
  -->
-=======
-<div *ngIf="singlePlan">
-  <p>id num: {{ singlePlan.planId }}</p>
-</div>
-<div><button (click)="onClickBack()">Go back</button></div>
-
->>>>>>> a3c96bc2381969fe60d0112ece542725b1ee2a95
