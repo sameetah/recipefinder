@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'favorites', component: FavoriteRecipesComponent },
   { path: 'meal-plan', component: WeeklyMealPlanComponent },
   { path: 'meal-plan/:planName', component: WeeklyCardComponent },
-
   { path: 'food-and-drink', component: FoodAndDrinkComponent },
   { path: '', redirectTo: '/meal-plan', pathMatch: 'full' },
 ];

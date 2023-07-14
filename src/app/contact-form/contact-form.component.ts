@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogBoxComponent } from '../contact-dialog-box/contact-dialog-box.component';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-contact-form',
@@ -31,7 +30,8 @@ export class ContactFormComponent {
 
 
       const dialogRef = this.dialog.open(ContactDialogBoxComponent, {
-        width: '300px', //initial width for the dialog box
+        //width: '1000px', //initial width for the dialog box
+        //height: '1000px',
         panelClass: 'custom-dialog',
         data: {name: this.name, email:this.email, message:this.message},
         closeOnNavigation: true, // Close the dialog on navigating away from the page
