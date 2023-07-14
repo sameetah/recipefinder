@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +20,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
-import { RouterModule } from '@angular/router';
 import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
 import { FoodComponent } from './food/food.component';
 import { DrinkComponent } from './drink/drink.component';
