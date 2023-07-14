@@ -108,9 +108,7 @@ input[type="submit"] {
 button:hover,
 button:active,
 .field span:hover,
-.field span:active,
-.footer:hover,
-.footer:active {
+.field span:active {
   transition: var(--maintransition) !important;
   opacity: 0.7;
 }
@@ -141,6 +139,7 @@ button:active,
 
 .selected-items {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .recipe-tags {
