@@ -1,22 +1,28 @@
-<div class="mt-5 drinkOfTheDay">
-    <h3 class="mt-5">What about some drink recommendation?</h3>
-    <p class="h1">Refreshment of the day</p>
-    <div class="row mt-5" >
-      <div class="col-6 receipeText">
-        <h3>{{ randomDrink.label }}</h3>
-        <p>
-          All what you need for this receipe is: <br />
-          {{ randomDrink.ingredientLines }}
-        </p>
-        <p>Total calories: {{ randomDrink.calories | number }}</p>
-        <p>
-          You will spend {{ randomDrink.totalTime | number : "1.0-0" }} minutes to
-          prepare this receipe
-        </p>
-      </div>
-      <div class="col-6">
+<h4 class="mt-5">What about some drink recommendation?</h4>
+<h3 class="mb-3">Refreshment of the day</h3>
+<div class="container mainWrap mb-5" @Fading>
+  <div class="row">
+    <div class="col-6 mt-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 receipeText ps-5 my-4">
+      <h3 class="mb-2">{{ randomDrink.label }}</h3>
+      <p>
+        All what you need for this receipe is: <br />
+        {{ randomDrink.ingredientLines }}
+      </p>
+      <p class="bi bi-fire py-1">
+        Calories: {{ randomDrink.calories | number : "1.0-0" }} kcal
+      </p>
+      <p class="bi bi-stopwatch">
+        Time: {{ randomDrink.totalTime | number }} minutes
+      </p>
+    </div>
+    <div class="col-6 px-5 my-4">
+      <div class="card">
         <img src="{{ randomDrink.image }}" alt="img" />
       </div>
     </div>
   </div>
-  
+</div>

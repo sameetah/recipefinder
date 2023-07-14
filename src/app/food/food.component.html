@@ -1,22 +1,29 @@
-<div>
-    <h3 class="mt-5">Eating is neccessity, but Cooking is an Art</h3>
-    <p class="h1">Recipe of the day</p>
-    <div class="row mt-5">
-      <div class="col-6">
+<h4 class="mt-5">Eating is neccessity, but Cooking is an Art</h4>
+<h3 class="mb-3">Recipe of the day</h3>
+<div class="container mainWrap" @Fading>
+  <div class="row">
+    <div class="col-6 mt-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-6 px-5 my-4">
+      <div class="card">
         <img src="{{ randomReceipe.image }}" alt="img" />
       </div>
-      <div class="col-6 receipeText">
-        <h3>{{ randomReceipe.label }}</h3>
-        <p>
-          All what you need for this receipe is: <br />
-          {{ randomReceipe.ingredientLines }}
-        </p>
-        <p>Total calories: {{ randomReceipe.calories | number }}</p>
-        <p>
-          You will spend {{ randomReceipe.totalTime | number : "1.0-0" }} minutes
-          to prepare this receipe
-        </p>
-      </div>
+    </div>
+
+    <div class="col-6 receipeText pe-5 my-4">
+      <h3 class="mb-2">{{ randomReceipe.label }}</h3>
+      <p>
+        All what you need for this receipe is: <br />
+        {{ randomReceipe.ingredientLines }}
+      </p>
+      <p class="bi bi-fire py-1">
+        Calories: {{ randomReceipe.calories | number : "1.0-0" }} kcal
+      </p>
+      <p class="bi bi-stopwatch">
+        Time: {{ randomReceipe.totalTime | number }} minutes
+      </p>
     </div>
   </div>
-  
+</div>
