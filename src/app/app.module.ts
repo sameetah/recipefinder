@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeSearchFormComponent } from './recipe-search-form/recipe-search-form.component';
 import { RecipeResultsComponent } from './recipe-results/recipe-results.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 import { WeeklyMealPlanComponent } from './weekly-meal-plan/weekly-meal-plan.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +25,8 @@ import { FoodComponent } from './food/food.component';
 import { DrinkComponent } from './drink/drink.component';
 import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
 import { FooterComponent } from './footer/footer.component';
+import { StoreModule } from '@ngrx/store';
+import { recipeReducer } from './recipe.reducer';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { FooterComponent } from './footer/footer.component';
     RecipeSearchFormComponent,
     RecipeResultsComponent,
     RecipeDetailsComponent,
-    FavoriteRecipesComponent,
+    FavoritesComponent,
     WeeklyMealPlanComponent,
     NavbarComponent,
     WeeklyCardComponent,
@@ -52,13 +54,14 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    StoreModule.forRoot({ favorites: recipeReducer }),
     AppRoutingModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/search', pathMatch: 'full' },
       { path: 'search', component: RecipeSearchFormComponent },
       { path: 'results', component: RecipeResultsComponent },
       { path: 'recipe/:id', component: RecipeDetailsComponent },
-      { path: 'favorites', component: FavoriteRecipesComponent },
+      { path: 'favorites', component: FavoritesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
     ]),
   ],
