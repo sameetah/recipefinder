@@ -27,6 +27,8 @@ import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component
 import { FooterComponent } from './footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './recipe.reducer';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environmentFirebase } from './environments/environment';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { recipeReducer } from './recipe.reducer';
     MatDialogModule,
     MatIconModule,
     FontAwesomeModule,
+    AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
     HttpClientModule,
     FormsModule,
     NgbModule,
@@ -63,7 +66,7 @@ import { recipeReducer } from './recipe.reducer';
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
-    ]),
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent],
