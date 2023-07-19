@@ -10,7 +10,7 @@ describe('RecipeSearchFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, FormsModule],
-      declarations: [RecipeSearchFormComponent]
+      declarations: [RecipeSearchFormComponent],
     }).compileComponents();
   });
 
@@ -31,4 +31,3 @@ describe('RecipeSearchFormComponent', () => {
     expect(component.searchRecipes).toHaveBeenCalled();
   });
 });
-

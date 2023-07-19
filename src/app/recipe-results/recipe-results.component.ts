@@ -1,8 +1,16 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RecipeService } from '../recipe-service.service';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-
+import { RecipeService, RecipeSearchParams } from '../recipe-service.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
+import { Store } from '@ngrx/store';
+import { addRecipeToFavorites } from '../recipe.action';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-results',
@@ -11,18 +19,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('fadeInOut', [
       state('void', style({ opacity: 0 })),
-      transition(':enter', [
-        animate('600ms ease', style({ opacity: 1 }))
-      ]),
-      transition(':leave', [
-        animate('300ms ease', style({ opacity: 0 }))
-      ])
-    ])
-  ]
+      transition(':enter', [animate('600ms ease', style({ opacity: 1 }))]),
+      transition(':leave', [animate('300ms ease', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class RecipeResultsComponent implements OnInit {
-  searchResults: any[] = [];
-  selectedRecipe: any = null;
+  searchResults: { recipe: Recipe }[] = [];
+  selectedRecipe: { recipe: Recipe } | null = null;
   dishType: string;
   diet: string;
   healthLabel: string;
@@ -30,8 +34,9 @@ export class RecipeResultsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private store: Store,
     private recipeService: RecipeService
-  ) {    
+  ) {
     this.dishType = '';
     this.diet = '';
     this.healthLabel = '';
@@ -48,29 +53,42 @@ export class RecipeResultsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const { ingredients, dishType, diet, health, cuisineType } = params;
-      const searchParams = {
-        ingredients: ingredients ? ingredients.split(',') : [],
-        dishType: dishType ? dishType.split(',') : [],
-        diet: diet ? diet.split(',') : [],
-        health: health ? health.split(',') : [],
-        cuisineType: cuisineType ? cuisineType.split(',') : []
+    this.route.queryParams.subscribe((params) => {
+      const searchParams: RecipeSearchParams = {
+        ingredients: params['ingredients'] ? params['ingredients'] : [],
+        dishType: params['dishType'] ? params['dishType'] : [],
+        diet: params['diet'] ? params['diet'] : [],
+        health: params['health'] ? params['health'] : [],
+        cuisineType: params['cuisineType'] ? params['cuisineType'] : [],
       };
 
-      this.recipeService.searchRecipes(searchParams).subscribe((recipes: any) => {
-        this.searchResults = recipes.hits;
-      });
+      this.searchResults = this.recipeService.getLastSearchResults();
+
+      if (this.searchResults.length === 0) {
+        this.recipeService
+          .searchRecipes(searchParams)
+          .subscribe((recipes: { hits: { recipe: Recipe }[] }) => {
+            this.searchResults = recipes.hits;
+          });
+      }
     });
   }
 
-  openRecipeDetails(recipe: any, index: number) {
+  openRecipeDetails(recipe: { recipe: Recipe }, index: number) {
     this.selectedRecipe = recipe;
     this.currentRecipeIndex = index;
-    this.dishType = recipe.recipe.dishType ? recipe.recipe.dishType.join(', ') : '';
-    this.diet = recipe.recipe.dietLabels ? recipe.recipe.dietLabels.join(', ') : '';
-    this.healthLabel = recipe.recipe.healthLabels ? recipe.recipe.healthLabels.join(', ') : '';
-    this.cuisine = recipe.recipe.cuisineType ? recipe.recipe.cuisineType.join(', ') : '';
+    this.dishType = recipe.recipe.dishType
+      ? recipe.recipe.dishType.join(', ')
+      : '';
+    this.diet = recipe.recipe.dietLabels
+      ? recipe.recipe.dietLabels.join(', ')
+      : '';
+    this.healthLabel = recipe.recipe.healthLabels
+      ? recipe.recipe.healthLabels.join(', ')
+      : '';
+    this.cuisine = recipe.recipe.cuisineType
+      ? recipe.recipe.cuisineType.join(', ')
+      : '';
   }
 
   closeRecipeDetails() {
@@ -85,28 +103,46 @@ export class RecipeResultsComponent implements OnInit {
     if (this.currentRecipeIndex < this.searchResults.length - 1) {
       this.currentRecipeIndex++;
       this.selectedRecipe = this.searchResults[this.currentRecipeIndex];
-      this.dishType = this.selectedRecipe.recipe.dishType ? this.selectedRecipe.recipe.dishType.join(', ') : '';
-      this.diet = this.selectedRecipe.recipe.dietLabels ? this.selectedRecipe.recipe.dietLabels.join(', ') : '';
-      this.healthLabel = this.selectedRecipe.recipe.healthLabels ? this.selectedRecipe.recipe.healthLabels.join(', ') : '';
-      this.cuisine = this.selectedRecipe.recipe.cuisineType ? this.selectedRecipe.recipe.cuisineType.join(', ') : '';
+      this.dishType = this.selectedRecipe.recipe.dishType
+        ? this.selectedRecipe.recipe.dishType.join(', ')
+        : '';
+      this.diet = this.selectedRecipe.recipe.dietLabels
+        ? this.selectedRecipe.recipe.dietLabels.join(', ')
+        : '';
+      this.healthLabel = this.selectedRecipe.recipe.healthLabels
+        ? this.selectedRecipe.recipe.healthLabels.join(', ')
+        : '';
+      this.cuisine = this.selectedRecipe.recipe.cuisineType
+        ? this.selectedRecipe.recipe.cuisineType.join(', ')
+        : '';
     }
   }
-  
+
   navigateToPreviousRecipe() {
     if (this.currentRecipeIndex > 0) {
       this.currentRecipeIndex--;
       this.selectedRecipe = this.searchResults[this.currentRecipeIndex];
-      this.dishType = this.selectedRecipe.recipe.dishType ? this.selectedRecipe.recipe.dishType.join(', ') : '';
-      this.diet = this.selectedRecipe.recipe.dietLabels ? this.selectedRecipe.recipe.dietLabels.join(', ') : '';
-      this.healthLabel = this.selectedRecipe.recipe.healthLabels ? this.selectedRecipe.recipe.healthLabels.join(', ') : '';
-      this.cuisine = this.selectedRecipe.recipe.cuisineType ? this.selectedRecipe.recipe.cuisineType.join(', ') : '';
+      this.dishType = this.selectedRecipe.recipe.dishType
+        ? this.selectedRecipe.recipe.dishType.join(', ')
+        : '';
+      this.diet = this.selectedRecipe.recipe.dietLabels
+        ? this.selectedRecipe.recipe.dietLabels.join(', ')
+        : '';
+      this.healthLabel = this.selectedRecipe.recipe.healthLabels
+        ? this.selectedRecipe.recipe.healthLabels.join(', ')
+        : '';
+      this.cuisine = this.selectedRecipe.recipe.cuisineType
+        ? this.selectedRecipe.recipe.cuisineType.join(', ')
+        : '';
     }
   }
-  
 
-showTags: boolean = false;
+  addToFavorites(recipe: Recipe) {
+    console.log('Dispatching action', recipe);
+    this.store.dispatch(addRecipeToFavorites({ recipe }));
+  }
 
-currentRecipeIndex: number = -1;
+  showTags: boolean = false;
 
-
+  currentRecipeIndex: number = -1;
 }

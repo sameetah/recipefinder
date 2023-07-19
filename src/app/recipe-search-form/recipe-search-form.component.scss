@@ -4,6 +4,7 @@
   font-family: lato, sans-serif;
   scroll-behavior: smooth;
   font-style: var(--black);
+  color: #606c38;
 }
 
 :root {
@@ -120,7 +121,6 @@ button:active,
 .field span:hover,
 .field span:active {
   background-color: var(--green) !important;
-  font-size: 20px;
 }
 
 .btn-primary {
@@ -131,6 +131,8 @@ button:active,
   padding-right: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
+  font-size: 20px;
+  color: #fefae0;
 }
 
 .field {
@@ -168,7 +170,8 @@ h4 {
   padding-left: 0.5rem;
 }
 
-h1, p {
+h1,
+p {
   display: flex;
   justify-content: center;
 }

@@ -4,17 +4,17 @@ import { RecipeService } from '../recipe-service.service';
 @Component({
   selector: 'app-food',
   templateUrl: './food.component.html',
-  styleUrls: ['./food.component.scss']
+  styleUrls: ['./food.component.scss'],
 })
-export class FoodComponent implements OnInit{ 
+export class FoodComponent implements OnInit {
+  randomReceipe: any = [];
 
-  randomReceipe: any = []
-  
+  constructor(private randomRecipe: RecipeService) {}
 
-  constructor(private randomRecipe: RecipeService ) {}
- 
   ngOnInit() {
-    this.randomRecipe.searchRandomRecipes().subscribe(response =>  this.randomReceipe = response.hits[0].recipe);
+    this.randomRecipe
+      .searchRandomRecipes()
+      .subscribe((response) => (this.randomReceipe = response.hits[0].recipe));
     // this.randomDrink.searchRandomDrink().subscribe(response =>  this.randomDrink = response.hits[0].recipe);
   }
 }

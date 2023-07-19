@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RecipeService } from '../recipe-service.service';
+import { RecipeService, RecipeSearchParams } from '../recipe-service.service';
 
 @Component({
   selector: 'app-recipe-search-form',
   templateUrl: './recipe-search-form.component.html',
-  styleUrls: ['./recipe-search-form.component.scss']
+  styleUrls: ['./recipe-search-form.component.scss'],
 })
 export class RecipeSearchFormComponent implements OnInit {
   ingredients: string[] = [];
@@ -24,32 +24,25 @@ export class RecipeSearchFormComponent implements OnInit {
   ngOnInit() {}
 
   searchRecipes() {
-    const API_ENDPOINT = 'https://api.edamam.com/search';
-    const APP_ID = '46f85330';
-    const APP_KEY = '39acb22fea92153f6dcc90a9ad66adea';
-
-    const searchParams = {
-      q: this.ingredients.join(','),
-      ingredients: this.ingredients.join(','),
-      dishType: this.dishType.filter(dishType => dishType.selected).map(dishType => dishType.value),
-      diet: this.diet.filter(diet => diet.selected).map(diet => diet.value),
-      health: this.health.filter(health => health.selected).map(health => health.value),
-      cuisineType: this.cuisineType.filter(cuisine => cuisine.selected).map(cuisine => cuisine.value)
+    const searchParams: RecipeSearchParams = {
+      ingredients: this.ingredients,
+      dishType: this.dishType
+        .filter((dishType) => dishType.selected)
+        .map((dishType) => dishType.value),
+      diet: this.diet.filter((diet) => diet.selected).map((diet) => diet.value),
+      health: this.health
+        .filter((health) => health.selected)
+        .map((health) => health.value),
+      cuisineType: this.cuisineType
+        .filter((cuisine) => cuisine.selected)
+        .map((cuisine) => cuisine.value),
     };
 
     console.log('Search Params:', searchParams);
 
-    const queryParams = {
-      ingredients: searchParams.q,
-      dishType: searchParams.dishType.join(','),
-      diet: searchParams.diet.join(','),
-      health: searchParams.health.join(','),
-      cuisineType: searchParams.cuisineType.join(',')
-    };
+    this.recipeService.clearLastSearchResults();
 
-    console.log('Query Params:', queryParams);
-
-    this.router.navigate(['/results'], { queryParams });
+    this.router.navigate(['/results'], { queryParams: searchParams });
   }
 
   addIngredient() {
@@ -70,7 +63,7 @@ export class RecipeSearchFormComponent implements OnInit {
     { label: 'Main Course', value: 'Main Course', selected: false },
     { label: 'Side Dish', value: 'Side Dish', selected: false },
     { label: 'Drinks', value: 'Drinks', selected: false },
-    { label: 'Dessert', value: 'Dessert', selected: false }
+    { label: 'Dessert', value: 'Dessert', selected: false },
   ];
 
   dietList: any[] = [
@@ -79,7 +72,7 @@ export class RecipeSearchFormComponent implements OnInit {
     { label: 'High Protein', value: 'high-protein', selected: false },
     { label: 'Low Carb', value: 'low-carb', selected: false },
     { label: 'Low Fat', value: 'low-fat', selected: false },
-    { label: 'Low Sodium', value: 'low-sodium', selected: false }
+    { label: 'Low Sodium', value: 'low-sodium', selected: false },
   ];
 
   healthList: any[] = [
@@ -87,7 +80,7 @@ export class RecipeSearchFormComponent implements OnInit {
     { label: 'Egg', value: 'egg-free', selected: false },
     { label: 'Gluten', value: 'gluten-free', selected: false },
     { label: 'Peanut', value: 'peanut-free', selected: false },
-    { label: 'Soy', value: 'soy-free', selected: false }
+    { label: 'Soy', value: 'soy-free', selected: false },
   ];
 
   cuisineTypesList: any[] = [
