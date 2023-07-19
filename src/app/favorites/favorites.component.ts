@@ -64,7 +64,7 @@ export class FavoritesComponent implements OnInit {
   showTags: boolean = false;
 
   //Sameetah's changes to add ingredient from selected favorite recipe to shopping list service file
-  shoppingList() {
-    this.shoppingService.mySubject$.next(this.favorites.slice());
+  addToShoppingList(recipe: Recipe) {
+    this.shoppingService.add(recipe);
   }
 }

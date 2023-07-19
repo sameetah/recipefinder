@@ -14,7 +14,6 @@ export class ShoppingComponent implements OnInit {
   constructor(private shoppingService: ShoppingListService) {
     this.shoppingService.mySubject$.subscribe((res) => {
       this.fav = res;
-      console.log(this.fav);
     });
   }
 
