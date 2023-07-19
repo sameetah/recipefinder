@@ -27,6 +27,7 @@ import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component
 import { FooterComponent } from './footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './recipe.reducer';
+import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { recipeReducer } from './recipe.reducer';
     DrinkComponent,
     FoodAndDrinkComponent,
     FooterComponent,
+    ShoppingComponent,
   ],
   imports: [
     BrowserModule,

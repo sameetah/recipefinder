@@ -6,6 +6,7 @@ import { Recipe } from '../recipe.model';
 import { Observable } from 'rxjs';
 import { removeRecipeFromFavorites } from '../recipe.action';
 import { LocalStorageService } from '../local-storage.service';
+import { ShoppingListService } from '../Shopping-list/shopping-list.service';
 
 @Component({
   selector: 'app-favorite-recipes',
@@ -13,6 +14,7 @@ import { LocalStorageService } from '../local-storage.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent implements OnInit {
+  fav: Recipe[] = [];
   favorites: Recipe[] = [];
   favorites$: Observable<{ favorites: Recipe[] }>;
 
@@ -20,7 +22,9 @@ export class FavoritesComponent implements OnInit {
     private store: Store<{ favorites: { favorites: Recipe[] } }>,
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+
+    private shoppingService: ShoppingListService //injecting an instance of shopping-list service  made by Sameetah
   ) {
     this.favorites$ = store.pipe(select(getFavorites));
   }
@@ -58,4 +62,9 @@ export class FavoritesComponent implements OnInit {
   }
 
   showTags: boolean = false;
+
+  //Sameetah's changes to add ingredient from selected favorite recipe to shopping list service file
+  shoppingList() {
+    this.shoppingService.mySubject$.next(this.favorites.slice());
+  }
 }
