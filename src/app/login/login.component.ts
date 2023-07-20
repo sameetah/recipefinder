@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from './firebase.service';
-
+import { trigger, state, style, transition, animate } from '@angular/animations'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +8,7 @@ import { FirebaseService } from './firebase.service';
 })
 export class LoginComponent implements OnInit {
   title = 'firebase-angular-auth'
-  isSignedIn = false
+  isSignedIn = false;
   constructor(public firebaseService : FirebaseService){}
   ngOnInit(): void {
     if(localStorage.getItem('user')!== null)
