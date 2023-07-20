@@ -4,33 +4,11 @@
 </div> -->
 <div id="container">
   <div class="shopping-list-container">
-    <h2 class="mb-4">Shopping List</h2>
-    <form>
-      <div class="row">
-        <div class="col-sm-5 form-group">
-          <label for="name">Ingredients</label>
-          <input type="text" id="name" class="form-control" />
-        </div>
-        <div class="col-sm-2 form-group">
-          <label for="amount">Quantitiy</label>
-          <input type="number" id="amount" class="form-control" />
-        </div>
-        <div class="col-sm-5 form-group d-flex align-items-end">
-          <button class="btn btn-success btn-action" type="submit">Add</button>
-          <button
-            class="btn btn-danger btn-action"
-            type="button"
-            onclick="deleteItem()"
-          >
-            Remove
-          </button>
-        </div>
-      </div>
-    </form>
+    <h2 class="text-center" id="meal-plan-heading">Shopping List</h2>
 
     <table class="table table-bordered">
       <thead>
-        <tr>
+        <tr id="head">
           <th>Recipe Ingredients</th>
           <th>Quantity</th>
         </tr>

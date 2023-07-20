@@ -1,8 +1,12 @@
 #container{
-    background-color: #f7f7f7;
+    background-color: #e9edc9;
     padding-top: 30px;
 }
-
+#meal-plan-heading {
+    margin-top: -0.75rem ;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
 .shopping-list-container {
     max-width: 800px;
     margin: 0 auto;
@@ -31,5 +35,23 @@
   .btn-danger.delete-btn i {
     color:#fbd0c9;
     font-size: 18px; 
-    padding: 10px 8px ;
+    padding: 10px 8px ; 
   }
+
+  th,
+td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  background-color: #96a535;
+  color: #ffffff;
+  font-weight: bold;
+  
+}
+
+td {
+  background-color: #ffffff;
+}
