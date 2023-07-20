@@ -29,6 +29,9 @@ import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './recipe.reducer';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environmentFirebase } from './environments/environment';
+import { LoginComponent } from './login/login.component';
+import { FirebaseService } from './login/firebase.service';
+import { LoginUserProfileComponent } from './login-user-profile/login-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { environmentFirebase } from './environments/environment';
     DrinkComponent,
     FoodAndDrinkComponent,
     FooterComponent,
+    LoginComponent,
+    LoginUserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,7 @@ import { environmentFirebase } from './environments/environment';
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
     ])
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
