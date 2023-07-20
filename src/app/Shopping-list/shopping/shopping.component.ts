@@ -18,4 +18,18 @@ export class ShoppingComponent implements OnInit {
   }
 
   ngOnInit() {}
+  addNewRecipeToSL() {}
+
+  deleteRecipe(recipe: Recipe) {
+    const currentRecipes = this.shoppingService.mySubject$.getValue();
+    const recipeIndex = currentRecipes.findIndex((r) => r === recipe);
+
+    if (recipeIndex !== -1) {
+      currentRecipes.splice(recipeIndex, 1);
+
+      localStorage.setItem('shoppingList', JSON.stringify(currentRecipes));
+
+      this.shoppingService.mySubject$.next([...currentRecipes]);
+    }
+  }
 }

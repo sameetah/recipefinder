@@ -12,13 +12,22 @@ export class ShoppingListService {
   mySubject$ = new BehaviorSubject<Recipe[]>([]);
 
   constructor() {
+    const shoppingListData = localStorage.getItem('shoppingList');
+
+    if (shoppingListData) {
+      const parsedData = JSON.parse(shoppingListData);
+      this.mySubject$.next(parsedData);
+    }
+
     this.mySubject$.subscribe((value) => {
       console.log('New Shopping List:', value);
-      // Here you could store in local storage
+
+      // Storing in local storage
+      localStorage.setItem('shoppingList', JSON.stringify(value));
     });
   }
 
-  add(recipe: Recipe) {
+  addNewRecipeToSL(recipe: Recipe) {
     console.log('New Shopping List Item:', recipe);
     this.mySubject$.next([...this.mySubject$.getValue(), recipe]);
   }

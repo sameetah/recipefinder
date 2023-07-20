@@ -1,0 +1,35 @@
+#container{
+    background-color: #f7f7f7;
+    padding-top: 30px;
+}
+
+.shopping-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .shopping-list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+
+  .shopping-list-item:last-child {
+    border-bottom: none;
+  }
+
+
+
+  .btn-danger.delete-btn {
+   
+   
+    padding: 0;
+    cursor: pointer;
+  }
+  .btn-danger.delete-btn i {
+    color:#fbd0c9;
+    font-size: 18px; 
+    padding: 10px 8px ;
+  }
