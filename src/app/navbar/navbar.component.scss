@@ -9,12 +9,16 @@
 
 #form-color button,
 #nav-color div {
-  color: var(--beige);
+  background-color: #e9edc9;
 }
 
 .navbar {
   border-radius: 1rem 1rem 0 0;
   overflow: hidden;
+  background-color: #e9edc9;
+}
+
+.navbar-nav {
   background-color: #e9edc9;
 }
 
