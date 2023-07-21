@@ -34,6 +34,7 @@ import { environmentFirebase } from './environments/environment';
 import { LoginComponent } from './login/login.component';
 import { FirebaseService } from './login/firebase.service';
 import { LoginUserProfileComponent } from './login-user-profile/login-user-profile.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { LoginUserProfileComponent } from './login-user-profile/login-user-profi
     TitlecasePipe,
     LoginComponent,
     LoginUserProfileComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
