@@ -25,7 +25,7 @@ export class RecipeService {
     private localStorageService: LocalStorageService
   ) {}
 
-  searchRecipes(searchParams: RecipeSearchParams): Observable<any> {
+  searchRecipes(searchParams: RecipeSearchParams, from: number = 0, to: number = 10): Observable<any> {
     const API_ENDPOINT = 'https://api.edamam.com/search';
     const APP_ID = environment.APP_ID;
     const APP_KEY = environment.APP_KEY;
@@ -33,7 +33,16 @@ export class RecipeService {
     let httpParams = new HttpParams()
       .set('app_id', APP_ID)
       .set('app_key', APP_KEY)
-      .set('q', searchParams.ingredients.join(','));
+      .set('q', searchParams.ingredients.join(','))
+      .set('from', String(from))
+      .set('to', String(to));
+
+    if (from !== undefined) {
+      httpParams = httpParams.set('from', String(from));
+    }
+    if (to !== undefined) {
+      httpParams = httpParams.set('to', String(to));
+    }
 
     if (searchParams.cuisineType.length > 0) {
       httpParams = httpParams.set(
