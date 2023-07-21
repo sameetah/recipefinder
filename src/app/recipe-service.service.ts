@@ -92,7 +92,7 @@ export class RecipeService {
   }
 
   private _url: string =
-    'https://api.edamam.com/search?app_id=46f85330&app_key=39acb22fea92153f6dcc90a9ad66adea&to=1&q=';
+  `${this.API_ENDPOINT}?app_id=${this.APP_ID}&app_key=${this.APP_KEY}&to=1&q=`;
 
   searchRandomRecipes() {
     const cuisineType = [
@@ -117,12 +117,7 @@ export class RecipeService {
       '&cuisineType=' +
       cuisineType[randomCuisineType];
 
-    console.log(searchParams);
-    console.log(this._url);
-
     const randomRecipe = this._url + searchParams;
-
-    console.log('1 RECIPE REQUEST', randomRecipe);
 
     return this.http.get<any>(randomRecipe);
   }
@@ -144,12 +139,7 @@ export class RecipeService {
     const randomDrinkType = Math.floor(Math.random() * drinkType.length);
     const searchParams = drinkType + '&dishType=Drinks';
 
-    console.log(searchParams);
-    console.log(this._url);
-
     const randomDrink = this._url + drinkType[randomDrinkType];
-
-    console.log('1 DRINK REQUEST', randomDrink);
 
     return this.http.get<any>(randomDrink);
   }
