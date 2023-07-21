@@ -5,52 +5,35 @@
     <table class="table table-bordered">
       <thead>
         <tr id="head">
-          <th>Recipe Ingredients</th>
-
+          <th>Recipe</th>
+          <th>Ingredient</th>
           <th>Quantity</th>
+          <th>Actions</th>
         </tr>
       </thead>
-      <tr *ngFor="let recipe of fav">
-        <td>
-          <ul class="list-unstyled">
-            <li class="d-flex align-items-center">
-              {{ recipe.label }}
-            </li>
-            <li
-              *ngFor="let ingredient of recipe.ingredients"
-              class="d-flex align-items-center"
-            >
-              {{ ingredient.food }}
-            </li>
-          </ul>
-        </td>
-        <td>
-          <div class="d-flex flex-column">
-            <i
-              class="fas fa-trash-alt d-flex align-items-center"
-              (click)="deleteRecipe(recipe)"
-            ></i>
-
-            <div
-              *ngFor="let ingredient of recipe.ingredients"
-              class="d-flex align-items-center"
-            >
-              <i
-                class="fa fa-minus text-danger"
-                (click)="decrementQuantity(ingredient)"
-              ></i>
-
-              {{ ingredient.quantity | number : "1.0-0" }}
-
-              <i
-                class="fa fa-plus text-success"
-                (click)="incrementQuantity(ingredient)"
-              ></i>
+      <tbody *ngFor="let recipe of fav">
+        <tr *ngFor="let ingredient of recipe.ingredients; let i = index">
+          <td *ngIf="i == 0" [attr.rowspan]="recipe.ingredients.length">
+            <div class="d-flex align-items-center">
+              <span class="fw-bold">{{ recipe.label }}</span>
+              <i class="fas fa-trash-alt ml-3" (click)="deleteRecipe(recipe)"></i>
             </div>
-          </div>
-        </td>
-      </tr>
+          </td>
+          <td>{{ ingredient.food }}</td>
+          <td>
+            {{ ingredient.quantity | number : "1.0-0" }}
+          </td>
+          <td>
+            <i class="fa fa-minus text-danger" (click)="decrementQuantity(ingredient)"></i>
+            <i class="fa fa-plus text-success" (click)="incrementQuantity(ingredient)"></i>
+          </td>
+        </tr>
+      </tbody>
     </table>
+    
+    
+    
+  
   </div>
 </div>
 
