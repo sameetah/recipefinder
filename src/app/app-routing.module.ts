@@ -8,6 +8,8 @@ import { WeeklyMealPlanComponent } from './weekly-meal-plan/weekly-meal-plan.com
 import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
 import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
 import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
+import { LoginComponent } from './login/login.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
@@ -19,6 +21,7 @@ const routes: Routes = [
   { path: 'meal-plan/:planName', component: WeeklyCardComponent },
   { path: 'food-and-drink', component: FoodAndDrinkComponent },
   { path: 'shopping-list', component: ShoppingComponent },
+  { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/meal-plan', pathMatch: 'full' },
 ];
 

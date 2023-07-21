@@ -29,6 +29,11 @@ import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './recipe.reducer';
 import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
 import { TitlecasePipe } from './pipes/titlecase.pipe';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environmentFirebase } from './environments/environment';
+import { LoginComponent } from './login/login.component';
+import { FirebaseService } from './login/firebase.service';
+import { LoginUserProfileComponent } from './login-user-profile/login-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,8 @@ import { TitlecasePipe } from './pipes/titlecase.pipe';
     FooterComponent,
     ShoppingComponent,
     TitlecasePipe,
+    LoginComponent,
+    LoginUserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +62,7 @@ import { TitlecasePipe } from './pipes/titlecase.pipe';
     MatDialogModule,
     MatIconModule,
     FontAwesomeModule,
+    AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
     HttpClientModule,
     FormsModule,
     NgbModule,
@@ -67,9 +75,9 @@ import { TitlecasePipe } from './pipes/titlecase.pipe';
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
-    ]),
+    ])
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
