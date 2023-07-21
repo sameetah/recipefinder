@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeSearchFormComponent } from './recipe-search-form/recipe-search-form.component';
 import { RecipeResultsComponent } from './recipe-results/recipe-results.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
@@ -67,7 +66,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
     AngularFireModule.initializeApp(environmentFirebase.firebaseConfig),
     HttpClientModule,
     FormsModule,
-    NgbModule,
     StoreModule.forRoot({ favorites: recipeReducer }),
     AppRoutingModule,
     RouterModule.forRoot([

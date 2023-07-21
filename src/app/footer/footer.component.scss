@@ -38,3 +38,11 @@
 h5 {
   font-weight: bold;
 }
+
+@media only screen and (max-width: 768px) {
+  .card-deck .card-lg {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+}

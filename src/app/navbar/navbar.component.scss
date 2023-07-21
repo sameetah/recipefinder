@@ -18,6 +18,23 @@
   background-color: #e9edc9;
 }
 
+.offcanvas-header {
+  background-color: #e9edc9;
+}
+
+.offcanvas-body {
+  background-color: #fefae0;
+}
+
+.nav-link {
+  color: #606c38;
+}
+
+h5 {
+  color: #606c38;
+  font-weight: bold;
+}
+
 button,
 button:hover,
 button:active,
@@ -69,4 +86,10 @@ button:active,
   padding: 10px;
   border-radius: 5px;
   color: #fefae0;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
 }

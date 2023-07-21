@@ -179,3 +179,42 @@ p {
 h1 {
   margin: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
+
+  .wrapper {
+    margin: 0;
+  }
+
+  .recipe-search-form {
+      max-width: 100%;
+      padding: 10px;
+  }
+
+  .form-group > label {
+      font-size: 1rem;
+  }
+
+  .h3 {
+      font-size: 1rem;
+  }
+
+  .btn-primary {
+      font-size: 16px;
+  }
+
+  .tag {
+      margin: 2px;
+  }
+
+  h4 {
+      margin: 10px;
+  }
+
+  .navbar-brand, .nav-link {
+      font-size: 14px;
+  }
+}
