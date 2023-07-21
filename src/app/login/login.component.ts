@@ -1,18 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from './firebase.service';
 import { FirebaseError } from './error.interface';
-import { trigger, state, style, transition, animate } from '@angular/animations'
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      state('signIn', style({
+        transform: 'translateX(0)',
+        zIndex: 2
+      })),
+      state('signUp', style({
+        transform: 'translateX(0)',
+        zIndex: 1
+      })),
+      transition('signIn => signUp', animate('400ms ease-in-out')),
+      transition('signUp => signIn', animate('400ms ease-in-out'))
+    ])
+  ]  
 })
 export class LoginComponent implements OnInit {
-  title = 'firebase-angular-auth'
+  title = 'firebase-angular-auth';
   isSignedIn = false;
+  loginState = 'signIn';
 
-  errorMessageSignUp: string | null = null; // Error message for sign-up
-  errorMessageSignIn: string | null = null; // Error message for sign-in
+  errorMessageSignUp: string | null = null;
+  errorMessageSignIn: string | null = null;
 
   constructor(public firebaseService : FirebaseService){}
 
@@ -60,7 +76,10 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogout(){
-    this.isSignedIn = false
+    this.isSignedIn = false;
+  }
 
+  switchState() {
+    this.loginState = this.loginState === 'signIn' ? 'signUp' : 'signIn';
   }
 }

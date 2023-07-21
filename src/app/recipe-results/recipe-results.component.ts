@@ -31,6 +31,12 @@ export class RecipeResultsComponent implements OnInit {
   diet: string;
   healthLabel: string;
   cuisine: string;
+  from: number = 0;
+  to: number = 10;
+  searchParams: RecipeSearchParams | null = null;
+  showTags: boolean = false;
+  currentRecipeIndex: number = -1
+  isLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,9 +58,16 @@ export class RecipeResultsComponent implements OnInit {
     }
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    if (!this.isLoading && this.isBottom()) {
+      this.loadMoreRecipes();
+    }
+  }  
+
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      const searchParams: RecipeSearchParams = {
+      this.searchParams = {
         ingredients: params['ingredients'] ? params['ingredients'] : [],
         dishType: params['dishType'] ? params['dishType'] : [],
         diet: params['diet'] ? params['diet'] : [],
@@ -66,13 +79,39 @@ export class RecipeResultsComponent implements OnInit {
 
       if (this.searchResults.length === 0) {
         this.recipeService
-          .searchRecipes(searchParams)
+          .searchRecipes(this.searchParams, this.from, this.to)
           .subscribe((recipes: { hits: { recipe: Recipe }[] }) => {
             this.searchResults = recipes.hits;
+            this.from = this.to;
+            this.to += 10;
           });
       }
     });
+}
+
+
+loadMoreRecipes() {
+  if (this.searchParams && !this.isLoading) {
+    this.isLoading = true;
+    this.recipeService
+      .searchRecipes(this.searchParams, this.from, this.to)
+      .subscribe((recipes: { hits: { recipe: Recipe }[] }) => {
+        this.searchResults = [...this.searchResults, ...recipes.hits];
+
+        this.from = this.to;
+        this.to += 10;
+        
+        this.isLoading = false;
+      });
   }
+}
+
+isBottom(): boolean {
+  const tolerance = 10;
+  return (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - tolerance;
+}
+
+
 
   openRecipeDetails(recipe: { recipe: Recipe }, index: number) {
     this.selectedRecipe = recipe;
@@ -141,8 +180,4 @@ export class RecipeResultsComponent implements OnInit {
     console.log('Dispatching action', recipe);
     this.store.dispatch(addRecipeToFavorites({ recipe }));
   }
-
-  showTags: boolean = false;
-
-  currentRecipeIndex: number = -1;
 }
