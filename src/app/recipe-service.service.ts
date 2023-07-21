@@ -25,14 +25,15 @@ export class RecipeService {
     private localStorageService: LocalStorageService
   ) {}
 
+  API_ENDPOINT = 'https://api.edamam.com/search';
+  APP_ID = environment.APP_ID;
+  APP_KEY = environment.APP_KEY;
+
   searchRecipes(searchParams: RecipeSearchParams, from: number = 0, to: number = 10): Observable<any> {
-    const API_ENDPOINT = 'https://api.edamam.com/search';
-    const APP_ID = environment.APP_ID;
-    const APP_KEY = environment.APP_KEY;
 
     let httpParams = new HttpParams()
-      .set('app_id', APP_ID)
-      .set('app_key', APP_KEY)
+      .set('app_id', this.APP_ID)
+      .set('app_key', this.APP_KEY)
       .set('q', searchParams.ingredients.join(','))
       .set('from', String(from))
       .set('to', String(to));
@@ -63,7 +64,7 @@ export class RecipeService {
       httpParams = httpParams.set('health', searchParams.health.join(','));
     }
 
-    return this.http.get<any>(API_ENDPOINT, { params: httpParams }).pipe(
+    return this.http.get<any>(this.API_ENDPOINT, { params: httpParams }).pipe(
       tap((results) => {
 
         const existingResults = this.getLastSearchResults();
@@ -91,7 +92,7 @@ export class RecipeService {
   }
 
   private _url: string =
-    'https://api.edamam.com/search?app_id=46f85330&app_key=39acb22fea92153f6dcc90a9ad66adea&to=1&q=';
+  `${this.API_ENDPOINT}?app_id=${this.APP_ID}&app_key=${this.APP_KEY}&to=1&q=`;
 
   searchRandomRecipes() {
     const cuisineType = [
@@ -116,12 +117,7 @@ export class RecipeService {
       '&cuisineType=' +
       cuisineType[randomCuisineType];
 
-    console.log(searchParams);
-    console.log(this._url);
-
     const randomRecipe = this._url + searchParams;
-
-    console.log('1 RECIPE REQUEST', randomRecipe);
 
     return this.http.get<any>(randomRecipe);
   }
@@ -143,12 +139,7 @@ export class RecipeService {
     const randomDrinkType = Math.floor(Math.random() * drinkType.length);
     const searchParams = drinkType + '&dishType=Drinks';
 
-    console.log(searchParams);
-    console.log(this._url);
-
     const randomDrink = this._url + drinkType[randomDrinkType];
-
-    console.log('1 DRINK REQUEST', randomDrink);
 
     return this.http.get<any>(randomDrink);
   }

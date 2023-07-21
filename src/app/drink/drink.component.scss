@@ -19,3 +19,27 @@
     text-align: end;
 }
 
+.additionalData {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  background-color: #fbffcf;
+}
+
+li {
+  list-style: none;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .drinkSwap {
+    flex-direction: column-reverse;
+
+  }
+
+  .receipeText {
+    text-align: left;
+  }
+}
