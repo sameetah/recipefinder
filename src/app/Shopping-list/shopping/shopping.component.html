@@ -15,11 +15,11 @@
         <tr *ngFor="let ingredient of recipe.ingredients; let i = index">
           <td *ngIf="i == 0" [attr.rowspan]="recipe.ingredients.length">
             <div class="d-flex align-items-center">
-              <span class="fw-bold">{{ recipe.label }}</span>
               <i class="fas fa-trash-alt ml-3" (click)="deleteRecipe(recipe)"></i>
+              <span class="fw-bold">&nbsp;&nbsp;{{ recipe.label }}</span>
             </div>
           </td>
-          <td>{{ ingredient.food }}</td>
+          <td>{{ ingredient.food | titlecase }}</td>
           <td>
             {{ ingredient.quantity | number : "1.0-0" }}
           </td>

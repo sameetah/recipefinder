@@ -35,10 +35,12 @@ export class ShoppingComponent implements OnInit {
   }
 
   decrementQuantity(ingredient: Ingredient) {
-    ingredient.quantity--;
-    localStorage.setItem('shoppingList', JSON.stringify(ingredient.quantity));
-
-    this.shoppingService.mySubject$.next([...this.fav]);
+    if (ingredient.quantity > 0) {
+      ingredient.quantity--;
+      localStorage.setItem('shoppingList', JSON.stringify(ingredient.quantity));
+  
+      this.shoppingService.mySubject$.next([...this.fav]);
+    }
   }
   incrementQuantity(ingredient: Ingredient) {
     ingredient.quantity++;
