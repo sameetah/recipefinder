@@ -1,12 +1,11 @@
 <div class="login-container">
 
-
-
             <div *ngIf="!isSignedIn" class="login-section">
              <h2>Sign up</h2>
              <input type="text" #emailSignup placeholder="your email"/>
              <input type="text" #passwordSignup placeholder="your password"/>
              <button class="btn btn-primary" (click)="onSignup(emailSignup.value, passwordSignup.value)">Sign up</button>
+             <p *ngIf="errorMessageSignUp"> Error: {{ errorMessageSignUp }} </p>
             </div> 
 
             <div class="login-section" *ngIf="!isSignedIn">
@@ -14,6 +13,7 @@
              <input type="text" #email placeholder="your email"/>
              <input type="text" #password placeholder="your password"/>
              <button class="btn btn-primary" (click)="onSignin(email.value, password.value)">Sign in</button>
+             <p *ngIf="errorMessageSignIn"> Error: {{ errorMessageSignIn }} </p>
             </div>
     <hr>
     <app-login-user-profile *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-login-user-profile>
