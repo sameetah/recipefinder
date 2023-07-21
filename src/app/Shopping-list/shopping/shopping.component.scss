@@ -26,17 +26,11 @@
 
 
 
-  .btn-danger.delete-btn {
-   
-   
-    padding: 0;
+  .fa-trash-alt ,.fa-minus,
+  .fa-plus {
     cursor: pointer;
   }
-  .btn-danger.delete-btn i {
-    color:#fbd0c9;
-    font-size: 18px; 
-    padding: 10px 8px ; 
-  }
+
 
   th,
 td {

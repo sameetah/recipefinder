@@ -1,7 +1,3 @@
-<!-- <div *ngFor="let recipe of fav">
-  <p>{{ recipe.label }}</p>
-  <p>{{ recipe.calories }}</p>
-</div> -->
 <div id="container">
   <div class="shopping-list-container">
     <h2 class="text-center" id="meal-plan-heading">Shopping List</h2>
@@ -10,36 +6,68 @@
       <thead>
         <tr id="head">
           <th>Recipe Ingredients</th>
+
           <th>Quantity</th>
         </tr>
       </thead>
       <tr *ngFor="let recipe of fav">
         <td>
           <ul class="list-unstyled">
-            <li>
+            <li class="d-flex align-items-center">
               {{ recipe.label }}
             </li>
-            <li *ngFor="let ingredient of recipe.ingredients">
+            <li
+              *ngFor="let ingredient of recipe.ingredients"
+              class="d-flex align-items-center"
+            >
               {{ ingredient.food }}
             </li>
           </ul>
         </td>
         <td>
-          <ul class="list-unstyled">
-            <li>
-              <button
-                class="btn btn-danger delete-btn"
-                (click)="deleteRecipe(recipe)"
-              >
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </li>
-            <li *ngFor="let ingredient of recipe.ingredients">
-              {{ ingredient.quantity }}
-            </li>
-          </ul>
+          <div class="d-flex flex-column">
+            <i
+              class="fas fa-trash-alt d-flex align-items-center"
+              (click)="deleteRecipe(recipe)"
+            ></i>
+
+            <div
+              *ngFor="let ingredient of recipe.ingredients"
+              class="d-flex align-items-center"
+            >
+              <i
+                class="fa fa-minus text-danger"
+                (click)="decrementQuantity(ingredient)"
+              ></i>
+
+              {{ ingredient.quantity | number : "1.0-0" }}
+
+              <i
+                class="fa fa-plus text-success"
+                (click)="incrementQuantity(ingredient)"
+              ></i>
+            </div>
+          </div>
         </td>
       </tr>
     </table>
   </div>
 </div>
+
+<!-- <div class="container">
+  <h1>Shopping List</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Recipe Ingredients</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of fav">
+        <td>{{ recipe.label }}</td>
+        <td><i class="fas fa-trash-alt" (click)="deleteRecipe(recipe)"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
