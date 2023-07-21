@@ -97,17 +97,17 @@ loadMoreRecipes() {
       .searchRecipes(this.searchParams, this.from, this.to)
       .subscribe((recipes: { hits: { recipe: Recipe }[] }) => {
         this.searchResults = [...this.searchResults, ...recipes.hits];
-        
+
         this.from = this.to;
         this.to += 10;
         
-        this.isLoading = false; // Set the loading state to false when done loading.
+        this.isLoading = false;
       });
   }
 }
 
 isBottom(): boolean {
-  const tolerance = 10; // You can adjust this value for sensitivity
+  const tolerance = 10;
   return (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - tolerance;
 }
 
