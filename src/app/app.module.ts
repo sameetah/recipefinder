@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './recipe.reducer';
 import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
+import { TitlecasePipe } from './pipes/titlecase.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
     FoodAndDrinkComponent,
     FooterComponent,
     ShoppingComponent,
+    TitlecasePipe,
   ],
   imports: [
     BrowserModule,
