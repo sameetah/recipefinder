@@ -64,14 +64,14 @@ export class WeeklyCardComponent implements OnInit {
       });
 
     this.mealPlanService
-      .fetchRecipes(this.planName, 'lunch')
+      .fetchRecipes(this.planName, 'main course')
       .subscribe((data: any) => {
         console.log(data.results);
         this.lunchData = data.results;
       });
 
     this.mealPlanService
-      .fetchRecipes(this.planName, 'dinner')
+      .fetchRecipes(this.planName, 'snack')
       .subscribe((data: any) => {
         console.log(data.results);
         this.dinnerData = data.results;

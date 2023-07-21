@@ -27,6 +27,8 @@ import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component
 import { FooterComponent } from './footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { recipeReducer } from './recipe.reducer';
+import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
+import { TitlecasePipe } from './pipes/titlecase.pipe';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environmentFirebase } from './environments/environment';
 import { LoginComponent } from './login/login.component';
@@ -49,6 +51,8 @@ import { LoginUserProfileComponent } from './login-user-profile/login-user-profi
     DrinkComponent,
     FoodAndDrinkComponent,
     FooterComponent,
+    ShoppingComponent,
+    TitlecasePipe,
     LoginComponent,
     LoginUserProfileComponent,
   ],

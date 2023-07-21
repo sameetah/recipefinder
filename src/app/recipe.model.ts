@@ -20,8 +20,10 @@ export interface Recipe {
 
 export interface Ingredient {
   text: string;
+  food: string;
   weight: number;
   foodCategory: string;
   foodId: string;
   image: string;
+  quantity: number;
 }
