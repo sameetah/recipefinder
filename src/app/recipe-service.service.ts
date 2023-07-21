@@ -65,13 +65,21 @@ export class RecipeService {
 
     return this.http.get<any>(API_ENDPOINT, { params: httpParams }).pipe(
       tap((results) => {
+
+        const existingResults = this.getLastSearchResults();
+
+
+        const updatedResults = existingResults.concat(results.hits);
+
+
         this.localStorageService.setItem(
           this.RESULTS_KEY,
-          JSON.stringify(results.hits)
+          JSON.stringify(updatedResults)
         );
       })
     );
   }
+
 
   getLastSearchResults(): { recipe: Recipe }[] {
     const results = this.localStorageService.getItem(this.RESULTS_KEY);
