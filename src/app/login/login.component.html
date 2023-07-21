@@ -15,6 +15,6 @@
              <button class="btn btn-primary" (click)="onSignin(email.value, password.value)">Sign in</button>
              <p *ngIf="errorMessageSignIn"> Error: {{ errorMessageSignIn }} </p>
             </div>
-    <hr>
+
     <app-login-user-profile *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-login-user-profile>
 </div>
