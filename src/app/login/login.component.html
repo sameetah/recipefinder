@@ -1,20 +1,29 @@
 <div class="login-container">
+    <div class="row">
 
-            <div *ngIf="!isSignedIn" class="login-section">
-             <h2>Sign up</h2>
-             <input type="text" #emailSignup placeholder="your email"/>
-             <input type="text" #passwordSignup placeholder="your password"/>
-             <button class="btn btn-primary" (click)="onSignup(emailSignup.value, passwordSignup.value)">Sign up</button>
-             <p *ngIf="errorMessageSignUp"> Error: {{ errorMessageSignUp }} </p>
-            </div> 
+        <div class="login-section" 
+            [@slideInOut]="loginState === 'signIn' ? 'signIn' : 'out'"
+            *ngIf="!isSignedIn && loginState === 'signIn'">
+            <h2>Sign In</h2>
+            <input type="text" #email placeholder="your email"/>
+            <input type="password" #password placeholder="your password"/>
+            <button class="btn btn-primary" (click)="onSignin(email.value, password.value)">Sign in</button>
+            <p *ngIf="errorMessageSignIn"> Error: {{ errorMessageSignIn }} </p>
+            <p><button class="btn btn-secondary" (click)="switchState()">Switch to Sign Up</button></p>
+        </div> 
 
-            <div class="login-section" *ngIf="!isSignedIn">
-             <h2>Sign In</h2>
-             <input type="text" #email placeholder="your email"/>
-             <input type="text" #password placeholder="your password"/>
-             <button class="btn btn-primary" (click)="onSignin(email.value, password.value)">Sign in</button>
-             <p *ngIf="errorMessageSignIn"> Error: {{ errorMessageSignIn }} </p>
-            </div>
+        <div class="login-section" 
+            [@slideInOut]="loginState === 'signUp' ? 'signUp' : 'out'"
+            *ngIf="!isSignedIn && loginState === 'signUp'">
+            <h2>Sign up</h2>
+            <input type="text" #emailSignup placeholder="your email"/>
+            <input type="password" #passwordSignup placeholder="your password"/>
+            <button class="btn btn-primary" (click)="onSignup(emailSignup.value, passwordSignup.value)">Sign up</button>
+            <p *ngIf="errorMessageSignUp"> Error: {{ errorMessageSignUp }} </p>
+            <p><button class="btn btn-secondary" (click)="switchState()">Switch to Sign In</button></p>
+        </div> 
 
+    </div>
     <app-login-user-profile *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-login-user-profile>
 </div>
+

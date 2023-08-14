@@ -1,11 +1,6 @@
-<button class="btn btn-secondary" (click)="onClickBack()">Go back</button>
-<button class="btn btn-secondary" (click)="clearAllData()">
-  Clear Storage
-</button>
-
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-3">
       <h1>Favorites</h1>
       <p>These are your favorite recipes</p>
       <p *ngIf="favorites.length === 0">You have no favorites</p>
@@ -16,38 +11,48 @@
   </div>
 </div>
 
+
 <div class="row justify-content-center">
   <div class="col-12 col-md-8 col-lg-6">
+    <div class="d-flex flex-wrap justify-content-between mb-4">
+      <button class="btn btn-secondary" (click)="onClickBack()">
+        Go back to Results
+      </button>
+      <button class="btn btn-secondary" (click)="clearAllData()">
+        Clear Storage
+      </button>
+    </div>
     <div class="favorite-card" *ngFor="let favorite of favorites">
       <div class="card-header py-2">
-        <div class="lh-lg d-flex flex-wrap justify-content-between px-2">
-          <div class="h2 mb-0 fw-bold" *ngIf="favorite">
-            {{ favorite.label }}
+        <div class="row justify-content-between">
+          <div class="col-md-6">
+            <!-- Left side column for favorite label and recipe source -->
+            <div class="h2 mb-0 fw-bold text-center" *ngIf="favorite">
+              {{ favorite.label }}
+            </div>
+            <div class="recipe-source text-center"> <!-- Added "text-center" class here -->
+              by
+              <a [href]="favorite.url" class="source-link fw-bold">
+                {{ favorite.source }}
+                <span class="bi bi-box-arrow-up-right"></span>
+              </a>
+            </div>
           </div>
-          <div class="recipe-source">
-            by
-            <a [href]="favorite.url" class="source-link fw-bold"
-              >{{ favorite.source }}&nbsp;<span
-                class="bi bi-box-arrow-up-right"
-              ></span
-            ></a>
+          <div class="col-md-6 d-flex flex-column justify-content-end">
+            <!-- Right side column for buttons -->
+            <button type="button" class="btn btn-secondary mb-2" (click)="removeFavorite(favorite)">
+              Remove from Favorites
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="addToShoppingList(favorite)">
+              Add to Shopping List
+            </button>
           </div>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="removeFavorite(favorite)"
-          >
-            Remove from Favorites
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="addToShoppingList(favorite)"
-          >
-            Add to Shopping List
-          </button>
         </div>
       </div>
+      
+      
+      
+      
       <div class="card-body px-2">
         <div class="row mt-2">
           <div class="col-auto">

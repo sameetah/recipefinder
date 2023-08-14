@@ -36,6 +36,7 @@ import { FirebaseService } from './login/firebase.service';
 import { LoginUserProfileComponent } from './login-user-profile/login-user-profile.component';
 import { QuantityConversionPipe } from './pipes/quantity-conversion.pipe';
 import { CustomMealPlanComponent } from './weekly-meal-plan/custom-meal-plan/custom-meal-plan.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CustomMealPlanComponent } from './weekly-meal-plan/custom-meal-plan/cus
     LoginUserProfileComponent,
     QuantityConversionPipe,
     CustomMealPlanComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

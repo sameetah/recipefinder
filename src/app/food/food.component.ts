@@ -15,6 +15,5 @@ export class FoodComponent implements OnInit {
     this.randomRecipe
       .searchRandomRecipes()
       .subscribe((response) => (this.randomReceipe = response.hits[0].recipe));
-    // this.randomDrink.searchRandomDrink().subscribe(response =>  this.randomDrink = response.hits[0].recipe);
   }
 }
