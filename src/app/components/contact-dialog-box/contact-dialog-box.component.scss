@@ -14,7 +14,6 @@
     position: fixed;
     top: 50%;
     right:10%;
-    //transform: translate(0, -50%);
     margin-top: 100px;
 }
 .contact-header {
@@ -70,8 +69,6 @@
   top: 30%;
   right:10%;
   margin-top: 90px;
-  //transform: translate(0, -50%);
-  
 }
 
 .form-control{
@@ -108,18 +105,19 @@
 }
 
 .form-control:focus + .form-label,
-.form-control:valid + .form-label {
-  top: -15px;
+.form-control:valid + .form-label,
+.form-control:valid .icon {
+  top: -10px;
   left: 0;
   font-size: 10px;
   color: #999;
 }
 
 .icon {
-  top: 50%;
+  top: 10px;
   position: absolute;
   right: 10px;
-  transform: translateY(-50%);
+  transform: translateY(-20%);
 }
 
 .error-container div {
@@ -134,8 +132,7 @@
 }
 
 .button-container {
-  //margin-left: 25px;
   display: flex;
   justify-content: center;
-  margin-top: -10px;
+  margin-top: 10px;
 }

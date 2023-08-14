@@ -46,7 +46,9 @@
              </div>
         </div>
         <div class="button-container">
-            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid"
+            (click)="submitForm()">Submit</button>
+            <p *ngIf = "isFormSubmitted"> Your message has been successfully submitted!</p>
         </div>
      </form>
    
