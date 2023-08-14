@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { ShoppingListService } from 'src/app/Shopping-list/shopping-list.service';
-import { LocalStorageService } from 'src/app/local-storage.service';
-import { Recipe } from 'src/app/recipe.model';
-import { getFavorites } from 'src/app/recipe.reducer';
+import { ShoppingListService } from 'src/app/services/shopping-list.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Recipe } from 'src/app/interfaces/recipe/recipe.model';
+import { getFavorites } from 'src/app/interfaces/recipe/recipe.reducer';
 
 @Component({
   selector: 'app-custom-meal-plan',
