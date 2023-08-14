@@ -4,36 +4,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RecipeSearchFormComponent } from './recipe-search-form/recipe-search-form.component';
-import { RecipeResultsComponent } from './recipe-results/recipe-results.component';
-import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { WeeklyMealPlanComponent } from './weekly-meal-plan/weekly-meal-plan.component';
+import { RecipeSearchFormComponent } from './components/recipe-search-form/recipe-search-form.component';
+import { RecipeResultsComponent } from './pages/recipe-results/recipe-results.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { WeeklyMealPlanComponent } from './pages/weekly-meal-plan/weekly-meal-plan.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ContactDialogBoxComponent } from './contact-dialog-box/contact-dialog-box.component';
+import { ContactDialogBoxComponent } from './components/contact-dialog-box/contact-dialog-box.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NavbarComponent } from './navbar/navbar.component';
-import { WeeklyCardComponent } from './weekly-card/weekly-card.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { WeeklyCardComponent } from './pages/weekly-card/weekly-card.component';
 import { ɵAnimationStyleNormalizer } from '@angular/animations/browser';
-import { FoodComponent } from './food/food.component';
-import { DrinkComponent } from './drink/drink.component';
-import { FoodAndDrinkComponent } from './food-and-drink/food-and-drink.component';
-import { FooterComponent } from './footer/footer.component';
+import { FoodComponent } from './pages/food-and-drink/food/food.component';
+import { DrinkComponent } from './pages/food-and-drink/drink/drink.component';
+import { FoodAndDrinkComponent } from './pages/food-and-drink/food-and-drink.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { StoreModule } from '@ngrx/store';
-import { recipeReducer } from './recipe.reducer';
-import { ShoppingComponent } from './Shopping-list/shopping/shopping.component';
+import { recipeReducer } from './interfaces/recipe/recipe.reducer';
+import { ShoppingComponent } from './pages/shopping/shopping.component';
 import { TitlecasePipe } from './pipes/titlecase.pipe';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environmentFirebase } from './environments/environment';
-import { LoginComponent } from './login/login.component';
-import { FirebaseService } from './login/firebase.service';
-import { LoginUserProfileComponent } from './login-user-profile/login-user-profile.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FirebaseService } from './services/firebase.service';
+import { LoginUserProfileComponent } from './components/login-user-profile/login-user-profile.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ContactDialogBoxComponent,
     RecipeSearchFormComponent,
     RecipeResultsComponent,
-    RecipeDetailsComponent,
     FavoritesComponent,
     WeeklyMealPlanComponent,
     NavbarComponent,
@@ -72,7 +70,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
       { path: '', redirectTo: '/search', pathMatch: 'full' },
       { path: 'search', component: RecipeSearchFormComponent },
       { path: 'results', component: RecipeResultsComponent },
-      { path: 'recipe/:id', component: RecipeDetailsComponent },
+      { path: 'recipe/:id', component: RecipeResultsComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
     ])

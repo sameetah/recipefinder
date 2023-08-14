@@ -1,0 +1,41 @@
+* {
+  color: #606c38;
+  font-family: Lato;
+}
+
+.favorite-card {
+  margin-bottom: 1.5rem;
+  background-color: #e9edc9;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.favorite-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.card-header {
+  border-bottom: 2px solid #fefae0;
+}
+
+.card-footer {
+  border-top: 2px solid #fefae0;
+}
+
+.list-group-item {
+  background-color: #fefae0;
+}
+
+.source-link {
+  color: #96a535;
+}
+
+.btn-secondary {
+  color: #fefae0;
+}

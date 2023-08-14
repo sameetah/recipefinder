@@ -61,3 +61,68 @@ body {
 }
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: lato, sans-serif;
+  scroll-behavior: smooth;
+  font-style: var(--black);
+  color: #606c38;
+}
+
+:root {
+  --green: #96a535;
+  --beige: #ede3d3;
+  --black: #141402;
+  --white: #f5f5f5;
+  --maintransition: all 0.3s linear;
+  --gradient: linear-gradient(60deg, #e9ae05 15%, #dd7215 50%, #98a60c 85%);
+}
+
+button,
+button:hover,
+button:active,
+.field span,
+.field span:hover,
+.field span:active {
+border: none !important;
+outline: none !important;
+box-shadow: none !important;
+}
+
+.yellow,
+button,
+.field span,
+input[type="submit"] {
+opacity: 1;
+}
+
+button:hover,
+button:active,
+.field span:hover,
+.field span:active {
+transition: var(--maintransition) !important;
+opacity: 0.7;
+}
+
+button,
+button:hover,
+button:active,
+.field span,
+.field span:hover,
+.field span:active {
+background-color: var(--green) !important;
+}
+
+.btn-primary {
+display: block;
+margin: 0 auto;
+text-align: center;
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 5px;
+padding-bottom: 5px;
+font-size: 16px;
+color: #fefae0;
+}
