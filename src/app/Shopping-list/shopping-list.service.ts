@@ -24,6 +24,7 @@ export class ShoppingListService {
 
       // Storing in local storage
       localStorage.setItem('shoppingList', JSON.stringify(value));
+      console.log(value);
     });
   }
 
@@ -46,10 +47,4 @@ export class ShoppingListService {
       )
     );
   }
-
-  /*one common standard weight for a packet of flour in Germany is 1 kilogram (kg), which is equivalent to 1000 grams (g).
-  Number of packets needed = Total amount of flour required / Weight of flour in each packet
-  you might find a small jar or bottle with 100ml if i want 2 tabespoon of some ingredient
-  Pre-packaged Small Portions: For commonly used ingredients, you might find pre-packaged small portions that contain the required amount for recipes. For example, you might find sachets containing 2 tablespoons of the ingredient.
-  . So, if your recipe calls for 2 tablespoons of lemon juice, you would need about 30 milliliters of lemon juice.*/
 }
