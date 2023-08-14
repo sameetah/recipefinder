@@ -1,0 +1,34 @@
+
+div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    width: 250px;
+}
+
+
+div > * {
+    padding: 5px;
+    margin: 10px;
+}
+
+#slogan {
+    margin-bottom: 0;
+}
+
+#button {
+    height: 40px;
+    width: auto;
+    color: #fefae0;
+}
+
+  button,
+  button:hover,
+  button:active,
+  .field span,
+  .field span:hover,
+  .field span:active {
+    background-color: var(--green) !important;
+    font-size: 20px;
+  }
+

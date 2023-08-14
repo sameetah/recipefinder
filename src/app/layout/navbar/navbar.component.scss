@@ -1,0 +1,99 @@
+:root {
+  --green: #96a535;
+  --beige: #ede3d3;
+  --black: #141402;
+  --white: #f5f5f5;
+  --maintransition: all 0.3s linear;
+  --gradient: linear-gradient(60deg, #e9ae05 15%, #dd7215 50%, #98a60c 85%);
+}
+
+#form-color button,
+#nav-color div {
+  background-color: #e9edc9;
+}
+
+.navbar {
+  border-radius: 1rem 1rem 0 0;
+  overflow: hidden;
+  background-color: #e9edc9;
+}
+
+.navbar-nav {
+  background-color: #e9edc9;
+}
+
+.offcanvas-header {
+  background-color: #e9edc9;
+}
+
+.offcanvas-body {
+  background-color: #fefae0;
+}
+
+.nav-link {
+  color: #606c38;
+}
+
+h5 {
+  color: #606c38;
+  font-weight: bold;
+}
+
+button,
+button:hover,
+button:active,
+.field span,
+.field span:hover,
+.field span:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+.yellow,
+button,
+.field span,
+input[type="submit"] {
+  opacity: 1;
+}
+
+button:hover,
+button:active,
+.field span:hover,
+.field span:active,
+.footer:hover,
+.footer:active {
+  transition: var(--maintransition) !important;
+  opacity: 0.7;
+}
+
+button,
+button:hover,
+button:active,
+.field span,
+.field span:hover,
+.field span:active {
+  background-color: var(--green) !important;
+}
+
+.btn-primary {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.login {
+  padding: 10px;
+  border-radius: 5px;
+  color: #fefae0;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
+}

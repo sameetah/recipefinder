@@ -5,3 +5,9 @@
   border: 1px solid rgba(254, 250, 224, 1);
   border-radius: 1rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    margin: 0;
+  }
+}
