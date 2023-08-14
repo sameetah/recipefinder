@@ -1,41 +1,93 @@
 <nav class="navbar px-4 navbar-expand-lg" id="nav-color">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold fs-4" href="#">Recipe Finder App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasDarkNavbar"
+      aria-controls="offcanvasDarkNavbar"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel"
+    >
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Recipe Finder App</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+          Recipe Finder App
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav align-self-center flex-grow-1 pe-3 fw-bold">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/results']" (click)="dismissOffcanvas()">Search Results</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/results']"
+              (click)="dismissOffcanvas()"
+              >Search Results</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/food-and-drink']" (click)="dismissOffcanvas()">Food and Drink</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/food-and-drink']"
+              (click)="dismissOffcanvas()"
+              >Food and Drink</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/meal-plan']" (click)="dismissOffcanvas()">Weekly Meal Plan</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/meal-plan']"
+              (click)="dismissOffcanvas()"
+              >Weekly Meal Plan</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/favorites']" (click)="dismissOffcanvas()">Favorites</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/favorites']"
+              (click)="dismissOffcanvas()"
+              >Favorites</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/shopping-list']" (click)="dismissOffcanvas()">Shopping List</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/shopping-list']"
+              (click)="dismissOffcanvas()"
+              >Shopping List</a
+            >
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="#" (click)="dismissOffcanvas()">Fair Trade</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/about-us']" (click)="dismissOffcanvas()">About Us</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/about-us']"
+              (click)="dismissOffcanvas()"
+              >About Us</a
+            >
           </li>
         </ul>
-        <button class="btn btn-success login" [routerLink]="['/login']" (click)="dismissOffcanvas()">Login</button>
+        <button
+          class="btn btn-success login"
+          [routerLink]="['/login']"
+          (click)="dismissOffcanvas()"
+        >
+          Login
+        </button>
       </div>
     </div>
   </div>
 </nav>
-
