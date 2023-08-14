@@ -40,7 +40,10 @@ import {
   ],
 })
 export class WeeklyMealPlanComponent {
-  constructor(private recipeService: WeeklyRecipePlanService) {}
+  constructor(
+    private recipeService: WeeklyRecipePlanService,
+    private router: Router
+  ) {}
 
   cardState: string = 'normal';
 
@@ -86,4 +89,9 @@ export class WeeklyMealPlanComponent {
         'Vegan diets are made up of only plant-based foods. This type of diet includes fruits, vegetables, soy, legumes, nuts and nut butters, plant-based dairy alternatives, sprouted or fermented plant foods and whole grains. Vegan diets dont include animal food.',
     },
   ];
+
+  goToCustomMealPlan() {
+    // Navigate to the CustomMealComponent template
+    this.router.navigateByUrl('/make-custom-meal-plan');
+  }
 }

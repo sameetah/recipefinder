@@ -66,5 +66,6 @@ export class FavoritesComponent implements OnInit {
   //Sameetah's changes to add ingredient from selected favorite recipe to shopping list service file
   addToShoppingList(recipe: Recipe) {
     this.shoppingService.addNewRecipeToSL(recipe);
+    console.log(recipe);
   }
 }

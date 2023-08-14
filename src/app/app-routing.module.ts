@@ -1,4 +1,3 @@
-
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeSearchFormComponent } from './components/recipe-search-form/recipe-search-form.component';
 import { RecipeResultsComponent } from './pages/recipe-results/recipe-results.component';
@@ -9,8 +8,8 @@ import { FoodAndDrinkComponent } from './pages/food-and-drink/food-and-drink.com
 import { ShoppingComponent } from './pages/shopping/shopping.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { CustomMealPlanComponent } from './weekly-meal-plan/custom-meal-plan/custom-meal-plan.component';
 import { NgModule } from '@angular/core';
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
@@ -21,9 +20,10 @@ const routes: Routes = [
   { path: 'meal-plan/:planName', component: WeeklyCardComponent },
   { path: 'food-and-drink', component: FoodAndDrinkComponent },
   { path: 'shopping-list', component: ShoppingComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'make-custom-meal-plan', component: CustomMealPlanComponent },
   { path: '', redirectTo: '/meal-plan', pathMatch: 'full' },
-  { path: 'about-us', component: AboutUsComponent }
+  { path: 'about-us', component: AboutUsComponent },
 ];
 
 @NgModule({

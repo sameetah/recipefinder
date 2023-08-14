@@ -18,15 +18,12 @@ export class ShoppingComponent implements OnInit {
     });
   }
 
-
   ngOnInit() {}
   addNewRecipeToSL() {}
-
 
   deleteRecipe(recipe: Recipe) {
     const currentRecipes = this.shoppingService.mySubject$.getValue();
     const recipeIndex = currentRecipes.findIndex((r) => r === recipe);
-
 
     if (recipeIndex !== -1) {
       currentRecipes.splice(recipeIndex, 1);
@@ -34,11 +31,9 @@ export class ShoppingComponent implements OnInit {
     }
   }
 
-
   decrementQuantity(ingredient: Ingredient) {
-    if (ingredient.quantity > 0) {
     ingredient.quantity--;
-    this.shoppingService.mySubject$.next(this.fav);}
+    this.shoppingService.mySubject$.next(this.fav);
   }
   incrementQuantity(ingredient: Ingredient) {
     ingredient.quantity++;
