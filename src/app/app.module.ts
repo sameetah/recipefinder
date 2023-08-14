@@ -34,6 +34,8 @@ import { environmentFirebase } from './environments/environment';
 import { LoginComponent } from './login/login.component';
 import { FirebaseService } from './login/firebase.service';
 import { LoginUserProfileComponent } from './login-user-profile/login-user-profile.component';
+import { QuantityConversionPipe } from './pipes/quantity-conversion.pipe';
+import { CustomMealPlanComponent } from './weekly-meal-plan/custom-meal-plan/custom-meal-plan.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
@@ -56,6 +58,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     TitlecasePipe,
     LoginComponent,
     LoginUserProfileComponent,
+    QuantityConversionPipe,
+    CustomMealPlanComponent,
     AboutUsComponent,
   ],
   imports: [
@@ -77,7 +81,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'meal-plan', component: WeeklyMealPlanComponent },
-    ])
+    ]),
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent],

@@ -1,0 +1,38 @@
+<div class="container">
+  <!-- List of recipes on the left side -->
+  <div class="recipes">
+    <div *ngFor="let rec of favorites">
+      <p>{{ rec.label }}</p>
+    </div>
+  </div>
+
+  <!-- Table with weekdays corresponding to breakfast, lunch, and dinner -->
+  <table class="meal-table">
+    <thead>
+      <tr>
+        <th>Weekday</th>
+        <th>Breakfast</th>
+        <th>Lunch</th>
+        <th>Dinner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Assuming weekdays array contains the weekdays (e.g., ["Monday", "Tuesday", ...]) -->
+      <tr *ngFor="let weekday of weekdays">
+        <td>{{ weekday }}</td>
+        <td>
+          <!-- Replace 'breakfastData' with your data source for breakfast recipes -->
+          <p>{{ "recipe" }}</p>
+        </td>
+        <td>
+          <!-- Replace 'lunchData' with your data source for lunch recipes -->
+          <p>{{ "recipe" }}</p>
+        </td>
+        <td>
+          <!-- Replace 'dinnerData' with your data source for dinner recipes -->
+          <p>{{ "recipe" }}</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

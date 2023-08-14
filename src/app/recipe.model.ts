@@ -26,4 +26,5 @@ export interface Ingredient {
   foodId: string;
   image: string;
   quantity: number;
+  measure: string;
 }
