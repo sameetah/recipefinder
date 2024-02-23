@@ -1,0 +1,138 @@
+
+@media (max-width: 640px) {
+    /* Small screens (up to 640px) */
+    /* Styles for small screens */
+
+  .dialog-container {
+    flex-direction: row;
+    align-items: flex-end;
+    max-width: 90%;
+    min-width: 300px;
+  }
+  .contact-form {
+    max-width: 150px;
+    position: fixed;
+    top: 50%;
+    right:10%;
+    margin-top: 100px;
+}
+.contact-header {
+  margin-left: -20px;
+  display: flex;
+  justify-content: space-around;}
+}
+
+@media (min-width:641px) and (max-width: 1007px) {
+    /* Medium screens (641px to 1007px) */
+    /* Styles for medium screens */
+
+  .dialog-container {
+    min-width: 400px;
+    flex-direction: row;
+    align-items: flex-end;
+    max-width: 90%;
+  }
+  .contact-form {
+    max-width: 200px;
+    position: fixed;
+    top: 50%;
+    right:10%;
+    margin-top: 100px;
+}
+
+}
+
+
+  /* Following Part - Large screens (above 1008px) */
+  /* Styles for large screens */
+
+  
+.dialog-container {
+  background-image: url("https://images.pexels.com/photos/4033005/pexels-photo-4033005.jpeg");
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  width: 90%;
+  min-height: 90%;
+  max-width: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.contact-form {
+  width: 250px;
+  position: fixed;
+  top: 30%;
+  right:10%;
+  margin-top: 90px;
+}
+
+.form-control{
+  padding-left: 40px;
+  width: 100%; 
+  padding: 0rem;
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+  background-color: whitesmoke;
+  border-radius: 0.25rem;
+}
+
+.contact-header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+
+.form-group{
+  position: relative;
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  font-size: 14px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.2s ease-out;
+}
+
+.form-control:focus + .form-label,
+.form-control:valid + .form-label,
+.form-control:valid .icon {
+  top: -10px;
+  left: 0;
+  font-size: 10px;
+  color: #999;
+}
+
+.icon {
+  top: 10px;
+  position: absolute;
+  right: 10px;
+  transform: translateY(-20%);
+}
+
+.error-container div {
+  font-size: 10px;
+  margin-bottom: -2px;
+}
+
+.close-button {
+  position: relative;
+  display: flex;
+  justify-content: baseline;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

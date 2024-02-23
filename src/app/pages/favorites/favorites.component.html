@@ -1,0 +1,160 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <h1>Favorites</h1>
+      <p>These are your favorite recipes</p>
+      <p *ngIf="favorites.length === 0">You have no favorites</p>
+      <p *ngIf="favorites.length > 0">
+        You have {{ favorites.length }} favorite(s)
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    <div class="d-flex flex-wrap justify-content-between mb-4">
+      <button class="btn btn-secondary" (click)="onClickBack()">
+        Go back to Results
+      </button>
+      <button class="btn btn-secondary" (click)="clearAllData()">
+        Clear Storage
+      </button>
+    </div>
+    <div class="favorite-card" *ngFor="let favorite of favorites">
+      <div class="card-header py-2">
+        <div class="row justify-content-between">
+          <div class="col-md-6">
+            <!-- Left side column for favorite label and recipe source -->
+            <div class="h2 mb-0 fw-bold text-center" *ngIf="favorite">
+              {{ favorite.label }}
+            </div>
+            <div class="recipe-source text-center"> <!-- Added "text-center" class here -->
+              by
+              <a [href]="favorite.url" class="source-link fw-bold">
+                {{ favorite.source }}
+                <span class="bi bi-box-arrow-up-right"></span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex flex-column justify-content-end">
+            <!-- Right side column for buttons -->
+            <button type="button" class="btn btn-secondary mb-2" (click)="removeFavorite(favorite)">
+              Remove from Favorites
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="addToShoppingList(favorite)">
+              Add to Shopping List
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="card-body px-2">
+        <div class="row mt-2">
+          <div class="col-auto">
+            <div class="favorite-image-container">
+              <img
+                class="favorite-image"
+                *ngIf="favorite"
+                [src]="favorite.image"
+                [alt]="favorite.label"
+              />
+              <div
+                class="small lh-lg d-flex flex-wrap justify-content-between my-2"
+              >
+                <div class="recipe-time fw-bold">
+                  <span class="bi bi-stopwatch">&nbsp; Time: &nbsp; </span>
+                  <span class="value">{{ favorite.totalTime }} min.</span>
+                </div>
+                <div class="recipe-calories fw-bold">
+                  <span class="bi bi-fire">&nbsp; Calories: &nbsp;</span>
+                  <span class="value"
+                    >{{ favorite.calories | number : "1.0-0" }} kcal</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <div class="lh-sm text-muted mb-2 fw-bold">Ingredients:</div>
+              <small class="lh-1 text-lowercase fw-bold">
+                <ul
+                  class="list-group border-top border-bottom list-group-flush mb-3"
+                >
+                  <li
+                    class="list-group-item p-1"
+                    *ngFor="let ingredient of favorite.ingredients"
+                  >
+                    {{ ingredient.text }}
+                  </li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer py-2">
+        <div class="lh-base text-muted px-2 fw-bold">
+          Show Labels
+          <a
+            href="javascript:void(0)"
+            id="tag"
+            class="toggler small text-muted ms-2 bi"
+            [class.bi-chevron-down]="!showTags"
+            [class.bi-chevron-up]="showTags"
+            (click)="showTags = !showTags"
+            title="Toggle tags"
+          ></a>
+        </div>
+        <div
+          class="label-container px-2"
+          [class.open]="showTags"
+          [style.border-top]="
+            showTags ? '1px solid var(--bs-border-color)' : 'none'
+          "
+          [style.border-bottom]="
+            showTags ? '1px solid var(--bs-border-color)' : 'none'
+          "
+        >
+          <div class="mb-1" *ngIf="showTags">
+            <div class="lh-base small text-muted">Dish Type:</div>
+            <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
+              <small class="fw-4 p-2 mb-1 me-1 form">{{
+                favorite.dishType
+              }}</small>
+            </small>
+          </div>
+          <div class="mb-1" *ngIf="showTags">
+            <div class="lh-sm small text-muted">Diet Type:</div>
+            <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
+              <small class="fw-4 p-2 mb-1 me-1 form">{{
+                favorite.dietLabels
+              }}</small>
+            </small>
+          </div>
+          <div class="mb-1" *ngIf="showTags">
+            <div class="lh-sm small text-muted">Allergy / Restriction:</div>
+            <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
+              <small class="fw-4 p-2 mb-1 me-1 form">{{
+                favorite.healthLabels
+              }}</small>
+            </small>
+          </div>
+          <div class="mb-1" *ngIf="showTags">
+            <div class="lh-sm small text-muted">Cuisine Type:</div>
+            <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
+              <small class="fw-4 p-2 mb-1 me-1 form">{{
+                favorite.cuisineType
+              }}</small>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

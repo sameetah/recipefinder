@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #606c38;
+}
+
+.mainWrap {
+    background-color: #e9edc9;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+
+.receipeText {
+    text-align: end;
+}
+
+.additionalData {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  background-color: #fbffcf;
+}
+
+li {
+  list-style: none;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .drinkSwap {
+    flex-direction: column-reverse;
+
+  }
+
+  .receipeText {
+    text-align: left;
+  }
+}

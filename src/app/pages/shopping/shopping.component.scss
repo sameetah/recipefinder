@@ -1,0 +1,51 @@
+#container{
+    background-color: #e9edc9;
+    padding-top: 30px;
+}
+#meal-plan-heading {
+    margin-top: -0.75rem ;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+.shopping-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fefae0;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  .shopping-list-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+
+  .shopping-list-item:last-child {
+    border-bottom: none;
+  }
+
+
+
+  .fa-trash-alt ,.fa-minus,
+  .fa-plus {
+    cursor: pointer;
+  }
+
+
+  th,
+td {
+  vertical-align: top;
+  text-align: center;
+  padding: 10px;
+}
+
+th {
+  background-color: #96a535;
+  color: #ffffff;
+  font-weight: bold;
+  
+}
+
+td {
+  background-color: #fefae0;
+}

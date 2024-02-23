@@ -1,0 +1,32 @@
+<h4 class="mt-5">What about some drink recommendation?</h4>
+<h3 class="mb-3">Refreshment of the day</h3>
+<div class="container mainWrap mb-5">
+  <div class="row">
+    <div class="col-6 mt-2"></div>
+  </div>
+
+  <div class="row drinkSwap">
+    <div class="col-12 col-md-6 receipeText px-3 my-4">
+      <h3 class="mb-2">{{ randomDrink.label }}</h3>
+      <h5>All what you need for this receipe is: <br /></h5>
+      <ul>
+        <li class="px-3" *ngFor="let ingredint of randomDrink.ingredients">
+          {{ ingredint.text }}
+        </li>
+      </ul>
+      <div class="additionalData mt-2">
+        <p class="bi bi-fire py-1" *ngIf="randomDrink.calories > 0">
+          Calories: {{ randomDrink.calories | number : "1.0-0" }} kcal
+        </p>
+        <p class="bi bi-stopwatch" *ngIf="randomDrink.totalTime > 0">
+          Time: {{ randomDrink.totalTime | number }} minutes
+        </p>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 px-3 my-4">
+      <div class="card">
+        <img src="{{ randomDrink.image }}" alt="img" />
+      </div>
+    </div>
+  </div>
+</div>

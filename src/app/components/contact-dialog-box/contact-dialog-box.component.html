@@ -1,0 +1,57 @@
+
+<div mat-dialog-content class="dialog-container" >
+  <div class= "contact-form">
+    <div class="contact-header"> 
+        <h1 mat-dialog-title> Contact Us</h1>
+        <div mat-dialog-actions>
+            <button class= close-button mat-icon-button mat-dialog-close>
+             <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <form (ngSubmit)="submitForm()" #contactForm="ngForm" novalidate>
+        
+        <div class="form-group">
+                    <input type="text" id="name" name="name" class="form-control" required [(ngModel)]="name">
+                    <label for="name" class="form-label">Your Name</label>
+                    <span class="icon">
+                        <i class="fa fa-user icon"></i>
+                    </span>
+        </div>
+          
+        <div class="form-group">
+            <div class="input-container">
+            <input type="email" id="email" name="email" class="form-control" required [(ngModel)]="email">
+            <label for="email" class="form-label">Your E-mail</label>
+                <span class="icon">
+                    <i class="fa fa-envelope icon"></i>
+                </span>  
+            </div>
+
+            <div class="error-container" *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)">
+                <div class="error-message" *ngIf="contactForm.controls['email'].hasError('required')">Email is required.*</div>
+                <div class="error-message" *ngIf="contactForm.controls['email'].hasError('email')">Invalid email format.</div>
+              </div>
+        </div>
+      
+        <div class="form-group">
+            <textarea id="message" name="message" class="form-control" required [(ngModel)]="message"></textarea>
+            <label for="message" class="form-label">Your Message</label>
+            <span class="icon">
+                <i class="fa fa-message icon"></i>
+            </span>
+             <div class="error-container" *ngIf="contactForm.controls['message'].invalid && (contactForm.controls['message'].dirty || contactForm.controls['message'].touched)">
+              <div *ngIf="contactForm.controls['message'].hasError('required')">Message is required.*</div>
+             </div>
+        </div>
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid"
+            (click)="submitForm()">Submit</button>
+            <p *ngIf = "isFormSubmitted"> Your message has been successfully submitted!</p>
+        </div>
+     </form>
+   
+  </div>
+</div>
+

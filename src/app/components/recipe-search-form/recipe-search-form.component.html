@@ -1,0 +1,171 @@
+<link
+  href="https://fonts.googleapis.com/css?family=Lato:400,700"
+  rel="stylesheet"
+  type="text/css"
+/>
+<h1>Welcome to Recipe Finder!</h1>
+<p>This is the home page of the Recipe Finder application.</p>
+<div class="recipe-search-form">
+  <h2>Recipe Search</h2>
+
+  <div class="form-group">
+    <div class="ingredients-container">
+      <div class="mb-3" id="ingredientsWrapper">
+        <p class="h3">Enter the first ingredient before adding more.</p>
+        <div
+          class="px-5 mb-3 field"
+          *ngFor="let ingredient of ingredients; let i = index"
+        >
+          <label class="visually-hidden" for="ingredient{{ i }}"
+            >Ingredient {{ i + 1 }}</label
+          >
+          <input
+            type="text"
+            id="ingredient{{ i }}"
+            class="border-0 me-2 form-control form-control-sm"
+            [(ngModel)]="ingredients[i]"
+            autofocus
+          />
+          <span class="btn px-3 btn-primary" (click)="removeIngredient(i)"
+            >&#8722;</span
+          >
+        </div>
+        <div class="px-5 mb-3 field">
+          <input
+            type="text"
+            class="border-0 me-2 form-control form-control-sm"
+            [(ngModel)]="ingredientInput"
+            placeholder="Enter ingredient here"
+            autofocus
+          />
+          <span class="btn px-3 btn-primary" (click)="addIngredient()"
+            >&#43;</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" (click)="toggleCheckbox('dishType')">
+    <label>
+      Dish Types:
+      <span
+        class="chevron"
+        [ngClass]="{
+          'chevron-up': showDishTypeCheckboxes,
+          'chevron-down': !showDishTypeCheckboxes
+        }"
+      ></span>
+    </label>
+    <div
+      class="checkbox-container"
+      [class.show-checkboxes]="showDishTypeCheckboxes"
+    >
+      <div *ngFor="let dishType of dishTypeList">
+        <input
+          type="checkbox"
+          id="{{ dishType.value }}"
+          [(ngModel)]="dishType.selected"
+          (change)="toggleDishType(dishType)"
+        />
+        <label for="{{ dishType.value }}">{{ dishType.label }}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" (click)="toggleCheckbox('diet')">
+    <label>
+      Diet Types:
+      <span
+        class="chevron"
+        [ngClass]="{
+          'chevron-up': showdietCheckboxes,
+          'chevron-down': !showdietCheckboxes
+        }"
+      ></span>
+    </label>
+    <div
+      class="checkbox-container"
+      [class.show-checkboxes]="showdietCheckboxes"
+    >
+      <div *ngFor="let diet of dietList">
+        <input
+          type="checkbox"
+          id="{{ diet.value }}"
+          [(ngModel)]="diet.selected"
+          (change)="togglediet(diet)"
+        />
+        <label for="{{ diet.value }}">{{ diet.label }}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" (click)="toggleCheckbox('health')">
+    <label>
+      Health Restrictions:
+      <span
+        class="chevron"
+        [ngClass]="{
+          'chevron-up': showhealthCheckboxes,
+          'chevron-down': !showhealthCheckboxes
+        }"
+      ></span>
+    </label>
+    <div
+      class="checkbox-container"
+      [class.show-checkboxes]="showhealthCheckboxes"
+    >
+      <div *ngFor="let health of healthList">
+        <input
+          type="checkbox"
+          id="{{ health.value }}"
+          [(ngModel)]="health.selected"
+          (change)="togglehealth(health)"
+        />
+        <label for="{{ health.value }}">{{ health.label }}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" (click)="toggleCheckbox('cuisineType')">
+    <label>
+      Cuisine Types:
+      <span
+        class="chevron"
+        [ngClass]="{
+          'chevron-up': showCuisineTypeCheckboxes,
+          'chevron-down': !showCuisineTypeCheckboxes
+        }"
+      ></span>
+    </label>
+    <div
+      class="checkbox-container"
+      [class.show-checkboxes]="showCuisineTypeCheckboxes"
+    >
+      <div *ngFor="let cuisine of cuisineTypesList">
+        <input
+          type="checkbox"
+          id="{{ cuisine.value }}"
+          [(ngModel)]="cuisine.selected"
+          (change)="toggleCuisineType(cuisine)"
+        />
+        <label for="{{ cuisine.value }}">{{ cuisine.label }}</label>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" (click)="searchRecipes()">
+    Show Recipes
+  </button>
+</div>
+
+<div class="selected-items">
+  <h4>Your Selected Ingredients and Criteria</h4>
+  <div class="recipe-tags">
+    <p *ngFor="let ingredient of ingredients" class="tag">{{ ingredient }}</p>
+    <p *ngFor="let dishType of dishType" class="tag">{{ dishType.label }}</p>
+    <p *ngFor="let diet of diet" class="tag">{{ diet.label }}</p>
+    <p *ngFor="let health of health" class="tag">{{ health.label }}</p>
+    <p *ngFor="let cuisine of cuisineType" class="tag">{{ cuisine.label }}</p>
+  </div>
+</div>

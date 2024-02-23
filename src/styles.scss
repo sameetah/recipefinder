@@ -1,4 +1,128 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$reciepFinder-primary: mat.define-palette(mat.$indigo-palette);
+$reciepFinder-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$reciepFinder-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$reciepFinder-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $reciepFinder-primary,
+      accent: $reciepFinder-accent,
+      warn: $reciepFinder-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($reciepFinder-theme);
+
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+html,
+body {
+  height: 100%;
+  background: #e5eda8;
+  background: -webkit-linear-gradient(
+    0deg,
+    #e5eda8 0%,
+    #e9edc9 50%,
+    #fefae0 100%
+  );
+  background: linear-gradient(0deg, #e5eda8 0%, #e9edc9 50%, #fefae0 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  margin: 0;
+  font-family: lato, sans-serif;
+}
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: lato, sans-serif;
+  scroll-behavior: smooth;
+  font-style: var(--black);
+  color: #606c38;
+}
+
+:root {
+  --green: #96a535;
+  --beige: #ede3d3;
+  --black: #141402;
+  --white: #f5f5f5;
+  --maintransition: all 0.3s linear;
+  --gradient: linear-gradient(60deg, #e9ae05 15%, #dd7215 50%, #98a60c 85%);
+}
+
+button,
+button:hover,
+button:active,
+.field span,
+.field span:hover,
+.field span:active {
+border: none !important;
+outline: none !important;
+box-shadow: none !important;
+}
+
+.yellow,
+button,
+.field span,
+input[type="submit"] {
+opacity: 1;
+}
+
+button:hover,
+button:active,
+.field span:hover,
+.field span:active {
+transition: var(--maintransition) !important;
+opacity: 0.7;
+}
+
+button,
+button:hover,
+button:active,
+.field span,
+.field span:hover,
+.field span:active {
+background-color: var(--green) !important;
+}
+
+.btn-primary {
+display: block;
+margin: 0 auto;
+text-align: center;
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 5px;
+padding-bottom: 5px;
+font-size: 16px;
+color: #fefae0;
+}

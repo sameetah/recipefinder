@@ -1,0 +1,63 @@
+<div id="container">
+  <div class="shopping-list-container">
+    <h2 class="text-center" id="meal-plan-heading">Shopping List</h2>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr id="head">
+          <th>Recipe</th>
+          <th>Ingredient</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let recipe of fav">
+        <tr *ngFor="let ingredient of recipe.ingredients; let i = index">
+          <td *ngIf="i == 0" [attr.rowspan]="recipe.ingredients.length">
+            <div class="d-flex align-items-center">
+              <i
+                class="fas fa-trash-alt ml-3"
+                (click)="deleteRecipe(recipe)"
+              ></i>
+              <span class="fw-bold">&nbsp;&nbsp;{{ recipe.label }}</span>
+            </div>
+          </td>
+          <td *ngIf="ingredient.quantity !== 0">
+            {{ ingredient.food | titlecase }}
+          </td>
+          <td *ngIf="ingredient.quantity !== 0">
+            {{ ingredient.quantity | quantityConversion : ingredient.measure }}
+          </td>
+          <td *ngIf="ingredient.quantity !== 0">
+            <i
+              class="fa fa-minus text-danger"
+              (click)="decrementQuantity(ingredient)"
+            ></i>
+            <i
+              class="fa fa-plus text-success"
+              (click)="incrementQuantity(ingredient)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <h1>Shopping List</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Recipe Ingredients</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of fav">
+        <td>{{ recipe.label }}</td>
+        <td><i class="fas fa-trash-alt" (click)="deleteRecipe(recipe)"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->

@@ -1,0 +1,33 @@
+<h4 class="mt-5">Eating is neccessity, but Cooking is an Art</h4>
+<h3 class="mb-3">Recipe of the day</h3>
+<div class="container mainWrap">
+  <div class="row">
+    <div class="col-6 mt-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6 receipeText px-3 my-4">
+      <div class="card">
+        <img src="{{ randomReceipe.image }}" alt="img" />
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 receipeText px-3 my-4">
+      <h3 class="mb-2">{{ randomReceipe.label }}</h3>
+      <h5>All what you need for this receipe is:</h5>
+      <ul>
+        <li class="px-3" *ngFor="let ingredint of randomReceipe.ingredients">
+          {{ ingredint.text }}
+        </li>
+      </ul>
+      <div class="additionalData mt-2">
+        <p class="bi bi-fire py-1" *ngIf="randomReceipe.calories > 0">
+          Calories: {{ randomReceipe.calories | number : "1.0-0" }} kcal
+        </p>
+        <p class="bi bi-stopwatch" *ngIf="randomReceipe.totalTime > 0">
+          Time: {{ randomReceipe.totalTime | number }} minutes
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

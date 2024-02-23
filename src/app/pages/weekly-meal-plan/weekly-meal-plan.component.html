@@ -1,0 +1,20 @@
+<div class="recipe-list">
+  <div class="recipe-card" *ngFor="let plan of cardsArray">
+    <img [src]="plan.imageUrl" class="card-img-top" alt="Card image" />
+    <div class="recipe-details">
+      <h5 class="recipe-title">{{ plan.planName }}</h5>
+      <p class="recipe-text">{{ plan.description }}</p>
+    </div>
+    <button
+      [routerLink]="['/meal-plan', plan.planName]"
+      class="btn btn-primary"
+      id="custom-button"
+    >
+      Get Meal Plan
+    </button>
+  </div>
+
+  <!--  <div class="make-own-plan" (click)="goToCustomMealPlan()">
+    Make Your Own Meal Plan
+  </div> -->
+</div>

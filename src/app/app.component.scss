@@ -1,0 +1,13 @@
+.wrapper {
+  margin: 4rem;
+  background: rgba(254, 250, 224, 0.7);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(254, 250, 224, 1);
+  border-radius: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    margin: 0;
+  }
+}
